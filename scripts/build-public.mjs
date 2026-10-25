@@ -91,8 +91,8 @@ const files = new Map([
  ["app/index.html",publicApp],
  ["assets/site.css",publicCss],
  ["assets/site.js",publicJs],
- ["robots.txt","User-agent: *\\nAllow: /\\nDisallow: /app/\\n"],
- ["vercel.json",JSON.stringify({version:2,framework:null,headers:securityHeaders},null,2)+"\\n"]
+ ["robots.txt","User-agent: *\nAllow: /\nDisallow: /app/\n"],
+ ["vercel.json",JSON.stringify({version:2,headers:securityHeaders},null,2)+"\n"]
 ]);
 await rm(out,{recursive:true,force:true});
 for (const [name,contents] of files) {
