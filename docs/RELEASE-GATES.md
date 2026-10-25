@@ -39,3 +39,11 @@
 **CI verde en el prototipo no implica cumplimiento de estos gates.** Las pruebas del laboratorio siguen ejecutándose pero no sustituyen validaciones de un servicio real.
 
 Seguimiento: issues #2–#11 y #13, epic #1.
+
+## Gate público separado del gate de firma
+Es admisible publicar **solo la página comercial informativa**, siempre que no contenga datos reales, formularios de identificación, firmas ni afirmaciones de acreditación inexistente. El paquete `dist/public` ofrece `/app/` únicamente como pantalla informativa.
+- [x] Separación de archivos públicos y código interno.
+- [ ] Hosting autorizado para uso comercial; **no** Vercel Hobby.
+- [ ] Validación de dominio final, privacidad, contenido legal y SEO.
+- [ ] Despliegue y revisión de cabeceras/rutas en entorno público.
+La apertura del sitio informativo **no** implica abrir la plataforma transaccional.

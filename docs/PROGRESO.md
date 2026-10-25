@@ -130,3 +130,19 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [x] Job `browser` de GitHub Actions, separado de las pruebas unitarias/PostgreSQL.
 - [x] GitHub Actions #40229425621: `browser`, `checks` y `database` exitosos, incluido renderizado de Chrome.
 - [ ] Auditoría visual manual (diseño, responsive, contraste WCAG) y pruebas con otros navegadores continúan pendientes.
+
+## Corrección del alcance de publicación comercial — 2026-10-25
+- [x] El producto se define como **sitio y aplicación accesibles públicamente para clientes en Venezuela**. Repositorio y backend siguen privados.
+- [x] Script de exportación `dist/public` con whitelist estricta y sin demos, SQL ni APIs internas.
+- [x] Ruta pública `/app/` preparada como aviso de acceso pendiente; no permite operaciones sin autenticación.
+- [x] SEO de landing publicable (`index,follow`) sin indexar el área de acceso.
+- [x] Cabeceras de seguridad configurables en Vercel y verificación automatizada del paquete.
+- [x] Pipeline de CI almacena artifact de sitio públicamente desplegable, pero **no lo publica**.
+- [ ] Verificar CI de esta iteración.
+- [ ] Configurar alojamiento compatible con uso comercial; Vercel Hobby no está autorizado para negocios.
+- [ ] Registrar dominio comercial y aprobar condiciones; no hacer compras automáticas.
+- [ ] Abrir funciones reales de la app únicamente después de identidad, custodia y certificación pertinentes.
+
+Ver `docs/PUBLICACION-COMERCIAL.md`.
+
+- [x] Salida `_headers` para Netlify/Cloudflare Pages, evitando depender de Vercel Hobby para hosting comercial.

@@ -118,3 +118,15 @@ El módulo `server/api-contract.mjs` añade un controlador preparado para conect
 
 ## Comprobación real de carga en navegador
 `tests/browser-smoke.sh` arranca el laboratorio sintético en `127.0.0.1` y usa Chrome headless en CI para inspeccionar el DOM de `/` y `/app/`. Comprueba que la portada, el panel y el estado del laboratorio carguen sin exponer archivos privados. **Es smoke test de Chromium, no auditoría visual completa ni WCAG.**
+
+## Destino comercial y publicación pública
+**Decisión de negocio:** web abierta al público y futura app de clientes para Venezuela, con GitHub privado. `scripts/build-public.mjs` exporta únicamente seis archivos del sitio público a `dist/public`, excluyendo backend, demos, SQL y documentación. La página `/app/` del paquete público informa que el acceso aún no está operativo; el laboratorio sigue siendo solo local.
+
+```bash
+node scripts/build-public.mjs
+node --test tests/public-build.test.mjs
+```
+
+**Ningún despliegue se ha activado:** el proveedor de hosting debe admitir uso comercial y la conexión Vercel actual está en plan Hobby no comercial. Ver `docs/PUBLICACION-COMERCIAL.md`.
+
+El paquete también incluye `_headers` para Netlify/Cloudflare Pages. En Netlify Free es posible publicar un sitio comercial sin enlazar GitHub: generar `dist/public` y subir **únicamente esa carpeta** mediante Netlify Drop; el proyecto sigue necesitando revisión legal y el área `/app/` continúa deshabilitada. La publicación aún no se ha ejecutado.
