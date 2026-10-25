@@ -64,3 +64,104 @@ for (const milestone of milestones) {
   item.append(title, state);
   list.append(item);
 }
+
+
+// Módulo de demostración estrictamente local: datos y plantillas sintéticos.
+const demoTemplate = document.getElementById("demo-template");
+const demoCreate = document.getElementById("demo-create");
+const demoFeedback = document.getElementById("demo-feedback");
+const demoDrafts = document.getElementById("demo-drafts");
+const demoEvents = document.getElementById("demo-events");
+const demoCount = document.getElementById("demo-count");
+const demoIntegrity = document.getElementById("demo-integrity");
+let demoAvailable = false;
+
+async function demoRequest(path, options) {
+  const response = await fetch(path, { cache: "no-store", credentials: "same-origin", ...options });
+  const result = await response.json();
+  if (!response.ok) throw new Error(result.error || "No se pudo procesar el laboratorio.");
+  if (result.simulated !== true || result.countryCode !== "VE") throw new Error("Respuesta del laboratorio no autorizada.");
+  return result;
+}
+
+function element(tag, value) {
+  const node = document.createElement(tag);
+  node.textContent = String(value);
+  return node;
+}
+
+function renderDemo(state) {
+  demoDrafts.replaceChildren();
+  demoEvents.replaceChildren();
+  demoCount.textContent = String(state.drafts.length);
+  demoIntegrity.textContent = state.auditIntegrityValid ? "Enlace de hashes consistente" : "Integridad no demostrada";
+  for (const draft of state.drafts) {
+    const item = document.createElement("li");
+    const info = document.createElement("div");
+    info.append(element("strong", draft.templateTitle), element("small", "Borrador sintético · " + draft.status + " · VE"));
+    item.append(info);
+    if (draft.status === "draft") {
+      const cancel = element("button", "Cancelar borrador");
+      cancel.type = "button";
+      cancel.addEventListener("click", async () => {
+        cancel.disabled = true;
+        try {
+          const updated = await demoRequest("/api/demo/drafts/" + encodeURIComponent(draft.id) + "/cancel", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ countryCode: "VE" })
+          });
+          renderDemo(updated);
+          demoFeedback.textContent = "Borrador sintético cancelado.";
+        } catch {
+          demoFeedback.textContent = "No se pudo cancelar el borrador de demostración.";
+          demoFeedback.dataset.level = "error";
+        } finally { cancel.disabled = false; }
+      });
+      item.append(cancel);
+    }
+    demoDrafts.append(item);
+  }
+  if (state.drafts.length === 0) demoDrafts.append(element("li", "No hay borradores de prueba."));
+  for (const event of state.events) {
+    const item = document.createElement("li");
+    const info = document.createElement("div");
+    info.append(element("strong", event.action === "draft-created" ? "Borrador creado" : "Borrador cancelado"));
+    info.append(element("small", "Evento sintético · " + event.sequence + " · SHA-256 " + event.hash.slice(0, 12) + "…"));
+    item.append(info);
+    demoEvents.append(item);
+  }
+  if (state.events.length === 0) demoEvents.append(element("li", "No hay eventos simulados."));
+}
+
+async function initDemo() {
+  try {
+    const state = await demoRequest("/api/demo/state");
+    demoAvailable = true;
+    demoTemplate.disabled = false;
+    demoCreate.disabled = false;
+    demoFeedback.textContent = "Laboratorio local activo. No ingresar datos personales ni documentos reales.";
+    renderDemo(state);
+  } catch {
+    demoFeedback.textContent = "Servidor de demostración no detectado. Inicia con DIGIFIRMA_DEMO=1 node server/dev.mjs.";
+    demoCreate.disabled = true;
+  }
+}
+demoCreate.addEventListener("click", async () => {
+  if (!demoAvailable) return;
+  demoCreate.disabled = true;
+  demoFeedback.dataset.level = "";
+  try {
+    const state = await demoRequest("/api/demo/drafts", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ countryCode: jurisdiction.countryCode, templateId: demoTemplate.value })
+    });
+    renderDemo(state);
+    demoFeedback.textContent = "Borrador de prueba creado. No se ha firmado ni enviado nada.";
+  } catch {
+    demoFeedback.textContent = "No se pudo crear el borrador sintético.";
+    demoFeedback.dataset.level = "error";
+  } finally { demoCreate.disabled = !demoAvailable; }
+});
+initDemo();

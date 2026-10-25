@@ -65,9 +65,28 @@
         <div class="feature-grid"><article class="feature"><div class="feature-icon">01</div><h3>Preparar documentos</h3><p>Cargar, validar y organizar archivos PDF de manera segura.</p><span class="soft-label">Pendiente</span></article><article class="feature"><div class="feature-icon">02</div><h3>Invitar firmantes</h3><p>Definir destinatarios en Venezuela, orden, identidad y consentimiento.</p><span class="soft-label">Pendiente</span></article><article class="feature"><div class="feature-icon">03</div><h3>Verificar evidencia</h3><p>Consultar integridad, trazas y constancias de firma.</p><span class="soft-label">Pendiente</span></article></div>
       </section>
 
-      <section class="view" id="view-documentos" aria-label="Documentos" hidden><div class="empty-state"><div class="empty-symbol">▤</div><h2>Sin documentos</h2><p>La custodia de archivos, cifrado, permisos y eliminación segura aún no están implementados. Este prototipo no acepta documentos.</p><span class="tag">Módulo planificado</span></div></section>
-      <section class="view" id="view-solicitudes" aria-label="Solicitudes" hidden><div class="empty-state"><div class="empty-symbol">↗</div><h2>Solicitudes aún no disponibles</h2><p>El envío a firmantes para el mercado venezolano solo se habilitará con autenticación, evidencia de consentimiento y medidas antifraude verificadas.</p><span class="tag">Módulo planificado</span></div></section>
-      <section class="view" id="view-auditoria" aria-label="Auditoría" hidden><div class="empty-state"><div class="empty-symbol">◎</div><h2>Sin eventos de auditoría</h2><p>Se diseñará un registro de eventos resistente a alteraciones, con integridad comprobable, sellos temporales y controles de acceso.</p><span class="tag">Módulo planificado</span></div></section>
+      <section class="view" id="view-documentos" aria-label="Documentos" hidden><div class="empty-state"><div class="empty-symbol">▤</div><h2>Custodia documental pendiente</h2><p>Este entorno no permite cargar ni almacenar archivos. Solo existen dos plantillas ficticias para ensayar borradores en el laboratorio local, dentro de Solicitudes.</p><span class="tag">Sin documentos reales</span></div></section>
+      <section class="view" id="view-solicitudes" aria-label="Solicitudes" hidden>
+        <article class="panel demo-panel">
+          <div class="panel-head"><div><span class="section-kicker">SOLO DATOS SINTÉTICOS</span><h2>Laboratorio local de solicitudes</h2></div><span class="tag">Sin firmas ni documentos reales</span></div>
+          <p class="panel-description">Ensaya la preparación y cancelación de borradores con plantillas ficticias. No identifica personas, no envía mensajes, no firma documentos ni guarda información al cerrar el servidor.</p>
+          <div class="demo-form">
+            <label for="demo-template">Plantilla ficticia</label>
+            <select id="demo-template" disabled><option value="acuerdo-demo">Acuerdo simulado de servicios</option><option value="solicitud-demo">Solicitud administrativa ficticia</option></select>
+            <button type="button" id="demo-create" disabled>Crear borrador de prueba</button>
+          </div>
+          <p id="demo-feedback" class="demo-feedback" role="status" aria-live="polite">El laboratorio requiere el servidor local de demostración.</p>
+          <div class="panel-head"><h2>Borradores de prueba</h2><span id="demo-count" class="tag">0</span></div>
+          <ol id="demo-drafts" class="demo-items"><li>Sin borradores de prueba.</li></ol>
+        </article>
+      </section>
+      <section class="view" id="view-auditoria" aria-label="Auditoría" hidden>
+        <article class="panel demo-panel">
+          <div class="panel-head"><div><span class="section-kicker">LABORATORIO · NO CERTIFICADO</span><h2>Historial de eventos simulados</h2></div><span id="demo-integrity" class="tag">Sin eventos</span></div>
+          <p class="panel-description">Este registro usa hashes SHA-256 enlazados solo para demostrar detección de cambios en memoria. No es auditoría inmutable, sello de tiempo confiable ni evidencia de firma electrónica.</p>
+          <ol id="demo-events" class="demo-items"><li>Sin eventos simulados.</li></ol>
+        </article>
+      </section>
       <section class="view" id="view-configuracion" aria-label="Configuración" hidden><div class="empty-state"><div class="empty-symbol">⚙</div><h2>Configuración protegida</h2><p>La gestión de organizaciones venezolanas, cédula o RIF, roles, retención y posibles proveedores acreditados por SUSCERTE requiere servicios seguros y verificación del propietario.</p><span class="tag">Módulo planificado</span></div></section>
       <footer class="footer">Digi-Firma Venezuela · Proyecto privado en desarrollo <span>Jurisdicción VE · Sin firma electrónica operativa</span></footer>
     </div>

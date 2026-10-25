@@ -24,6 +24,11 @@ jobs:
           node --check assets/app.js
           node --check src/project.mjs
           node --check tests/project.test.mjs
+          node --check server/demo-store.mjs
+          node --check server/demo-http.mjs
+          node --check server/dev.mjs
+          node --check tests/demo-store.test.mjs
+          node --check tests/demo-http.test.mjs
       - name: Ejecutar pruebas
         run: node --test
       - name: Comprobar archivos fundamentales

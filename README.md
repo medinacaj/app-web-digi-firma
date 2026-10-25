@@ -56,3 +56,27 @@ No hay backend, registro de usuarios, validación de cédulas o RIF, custodia de
 - [Plan maestro](https://github.com/medinacaj/app-web-digi-firma/issues/1).
 - [PR de inicio en borrador](https://github.com/medinacaj/app-web-digi-firma/pull/12).
 - Actualizar `docs/PROGRESO.md` en cada cambio verificado. No fusionar cambios sin pruebas.
+
+## Laboratorio local implementado
+
+Se añadió un servidor HTTP de prueba, solo para uso local, **desactivado por defecto** y enlazado a `127.0.0.1`. No es un entorno de producción. Tiene dos plantillas ficticias y permite crear/cancelar borradores y visualizar eventos SHA-256 en memoria. **No sube archivos, no contiene autenticación real, no genera firmas, no certifica identidad y no custodia datos.**
+
+Para iniciar únicamente este laboratorio (Node.js 22):
+```bash
+DIGIFIRMA_DEMO=1 node server/dev.mjs
+```
+En PowerShell:
+```powershell
+$env:DIGIFIRMA_DEMO = "1"
+node server/dev.mjs
+```
+Abrir `http://127.0.0.1:8787/` y entrar a **Solicitudes** para generar borradores sintéticos. El estado se borra al reiniciar el proceso. No ingresar datos reales de personas o empresas. El servidor rechaza `NODE_ENV=production`, orígenes remotos, entradas fuera de VE y cualquier intento de firma real.
+
+### Pruebas de laboratorio
+```bash
+node --test
+```
+Incluyen flujos de la API, límites, validaciones de cuerpo, control de origen y verificación de cadena de hashes, además de la UI/alcance. **La cadena de hashes en memoria no demuestra inviolabilidad ni equivale a una firma electrónica.**
+
+### Bloqueos de lanzamiento
+Para uso real faltan autenticación e identidad verificables, persistencia privada cifrada, subida/escaneo de PDFs, firmas ajustadas a ley venezolana, auditoría independiente y, cuando proceda, integración con PSC acreditado por SUSCERTE. La demo no reemplaza esos pasos.

@@ -36,3 +36,11 @@ Todo documento y solicitud deberá estar asociado a `jurisdiction_country = "VE"
 
 ## Decisiones todavía no aprobadas
 Framework, plataforma de hosting, residencia legal de datos, base de datos, identidad y verificación, almacenamiento, proveedor PSC, integraciones y modelo de cobro. Abrir ADRs y validar con pruebas antes de producción.
+
+## Implementación adicional — Laboratorio local (no productivo)
+- `server/demo-store.mjs`: transiciones de borradores ficticios, restricción jurisdiccional **VE** en cada mutación y hashes SHA-256 enlazados de eventos en memoria (sin efecto jurídico).
+- `server/demo-http.mjs`: servidor localhost con rutas estáticas de lista blanca, origen restringido, CSP, límite de cuerpo y validación estricta de entradas JSON.
+- `server/dev.mjs`: proceso opt-in con `DIGIFIRMA_DEMO=1`, `NODE_ENV != production` y bind a `127.0.0.1`. No acepta PDF, datos de firmantes ni claves.
+- `tests/demo-*.test.mjs`: pruebas de API y de dominio sin dependencias externas.
+
+**No reutilizar este servidor como backend productivo:** carece de autenticación, sesiones reales, persistencia, rotación de claves, integridad respaldada externamente y garantías de custodia. La validación `VE` de laboratorio no acredita jurisdicción ni identidad de actores reales.
