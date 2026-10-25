@@ -65,7 +65,25 @@
         <div class="feature-grid"><article class="feature"><div class="feature-icon">01</div><h3>Preparar documentos</h3><p>Cargar, validar y organizar archivos PDF de manera segura.</p><span class="soft-label">Pendiente</span></article><article class="feature"><div class="feature-icon">02</div><h3>Invitar firmantes</h3><p>Definir destinatarios en Venezuela, orden, identidad y consentimiento.</p><span class="soft-label">Pendiente</span></article><article class="feature"><div class="feature-icon">03</div><h3>Verificar evidencia</h3><p>Consultar integridad, trazas y constancias de firma.</p><span class="soft-label">Pendiente</span></article></div>
       </section>
 
-      <section class="view" id="view-documentos" aria-label="Documentos" hidden><div class="empty-state"><div class="empty-symbol">▤</div><h2>Custodia documental pendiente</h2><p>Este entorno no permite cargar ni almacenar archivos. Solo existen dos plantillas ficticias para ensayar borradores en el laboratorio local, dentro de Solicitudes.</p><span class="tag">Sin documentos reales</span></div></section>
+      <section class="view" id="view-documentos" aria-label="Documentos" hidden>
+      <article class="panel demo-panel">
+        <div class="panel-head"><div><span class="section-kicker">INTEGRIDAD LOCAL · SIN ENVÍO</span><h2>Huella SHA-256 de un PDF</h2></div><span class="tag">Solo en el navegador</span></div>
+        <p class="panel-description">Calcula la huella de un PDF de hasta 20 MiB, sin subirlo, almacenarlo o enviarlo. La coincidencia de huellas NO valida la autoría, ni convierte un documento en firmado o certificado.</p>
+        <div class="demo-form hash-form">
+          <label for="pdf-local">PDF local</label>
+          <input type="file" id="pdf-local" accept=".pdf,application/pdf">
+          <button type="button" id="pdf-hash" disabled>Calcular huella</button>
+        </div>
+        <p id="hash-status" role="status" aria-live="polite" class="demo-feedback">Selecciona un archivo para comenzar.</p>
+        <div class="hash-display"><label for="hash-result">SHA-256 calculado</label><output id="hash-result">Sin cálculo</output></div>
+        <div class="demo-form hash-form">
+          <label for="hash-expected">SHA-256 esperado (opcional)</label>
+          <input id="hash-expected" type="text" inputmode="text" maxlength="64" autocomplete="off" spellcheck="false" placeholder="64 caracteres hexadecimales">
+          <button type="button" id="hash-compare" disabled>Comparar</button>
+        </div>
+        <p id="hash-compare-status" class="demo-feedback" role="status" aria-live="polite">Compara huellas, no firmas electrónicas.</p>
+      </article>
+    </section>
       <section class="view" id="view-solicitudes" aria-label="Solicitudes" hidden>
         <article class="panel demo-panel">
           <div class="panel-head"><div><span class="section-kicker">SOLO DATOS SINTÉTICOS</span><h2>Laboratorio local de solicitudes</h2></div><span class="tag">Sin firmas ni documentos reales</span></div>

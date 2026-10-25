@@ -80,3 +80,9 @@ Incluyen flujos de la API, límites, validaciones de cuerpo, control de origen y
 
 ### Bloqueos de lanzamiento
 Para uso real faltan autenticación e identidad verificables, persistencia privada cifrada, subida/escaneo de PDFs, firmas ajustadas a ley venezolana, auditoría independiente y, cuando proceda, integración con PSC acreditado por SUSCERTE. La demo no reemplaza esos pasos.
+
+## Comprobación de integridad de PDF en el navegador
+
+El módulo **Documentos** permite calcular la huella SHA-256 de un PDF hasta 20 MiB con Web Crypto. El navegador lee el archivo localmente, valida solo su encabezado `%PDF-`, calcula el hash y permite compararlo con otro valor de 64 caracteres. **No transmite el contenido** ni lo guarda, pero tampoco valida que el PDF sea seguro, que tenga una firma válida o que su autor sea quien dice ser. No abrir documentos desconocidos con herramientas vulnerables.
+
+La función opera en un contexto seguro (`http://127.0.0.1:8787` o HTTPS) y es independiente del backend de demostración; en modo estático puede funcionar si el navegador permite Web Crypto en ese origen.

@@ -1,4 +1,5 @@
 import { milestones, projectProgress, jurisdiction } from "../src/project.mjs";
+import { sha256LocalPdf, compareSha256, LocalPdfError, PDF_MAX_BYTES } from "../src/local-pdf.mjs";
 
 if (jurisdiction.countryCode !== "VE" || jurisdiction.exclusive !== true) {
   throw new Error("Digi-Firma: configuración de jurisdicción inválida");
@@ -165,3 +166,51 @@ demoCreate.addEventListener("click", async () => {
   } finally { demoCreate.disabled = !demoAvailable; }
 });
 initDemo();
+
+
+// Calculadora de integridad local: no envia los datos al servidor.
+const pdfLocal = document.getElementById("pdf-local");
+const pdfHashButton = document.getElementById("pdf-hash");
+const hashOutput = document.getElementById("hash-result");
+const hashStatus = document.getElementById("hash-status");
+const hashExpected = document.getElementById("hash-expected");
+const hashCompare = document.getElementById("hash-compare");
+const compareStatus = document.getElementById("hash-compare-status");
+let currentPdfHash = null;
+pdfLocal.addEventListener("change", () => {
+  const file = pdfLocal.files?.[0];
+  currentPdfHash = null;
+  hashOutput.textContent = "Sin cálculo";
+  hashCompare.disabled = true;
+  pdfHashButton.disabled = !file;
+  hashStatus.textContent = file ? "Archivo seleccionado. El cálculo será local." : "Selecciona un archivo.";
+  compareStatus.textContent = "Compara huellas, no firmas electrónicas.";
+});
+pdfHashButton.addEventListener("click", async () => {
+  const file = pdfLocal.files?.[0];
+  if (!file) return;
+  pdfHashButton.disabled = true;
+  hashStatus.textContent = "Calculando en tu navegador…";
+  try {
+    if (file.size > PDF_MAX_BYTES) throw new LocalPdfError("LIMIT", "Máximo permitido: 20 MiB.");
+    currentPdfHash = await sha256LocalPdf(new Uint8Array(await file.arrayBuffer()));
+    hashOutput.textContent = currentPdfHash;
+    hashStatus.textContent = "Huella calculada sin transmitir el archivo.";
+    hashCompare.disabled = false;
+  } catch (error) {
+    currentPdfHash = null;
+    hashOutput.textContent = "No disponible";
+    hashStatus.textContent = error instanceof LocalPdfError ? error.message : "No se pudo procesar el archivo.";
+  } finally {
+    pdfLocal.value = "";
+  }
+});
+hashCompare.addEventListener("click", () => {
+  try {
+    compareStatus.textContent = compareSha256(currentPdfHash, hashExpected.value)
+      ? "Huellas iguales. Esto no prueba identidad ni firma electrónica."
+      : "Huellas diferentes. Los archivos podrían no ser idénticos.";
+  } catch (error) {
+    compareStatus.textContent = error instanceof LocalPdfError ? error.message : "Error de comparación.";
+  }
+});

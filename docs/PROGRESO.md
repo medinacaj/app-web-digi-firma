@@ -46,3 +46,11 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [ ] Integración jurídica y técnica con PSC cuando corresponda.
 
 **Límite:** los ítems terminados solo atañen a una demostración local y no cierran issues #5–#9 ni #13. Ninguna capacidad de firma real se ha habilitado.
+
+## Segunda iteración — Herramienta local de integridad
+- [x] Cálculo SHA-256 de PDFs en navegador sin carga ni almacenamiento.
+- [x] Comparación opcional con huella proporcionada por el usuario.
+- [x] Control de tamaño (20 MiB), cabecera `%PDF-` y resultados que aclaran que no son firmas.
+- [x] Pruebas unitarias de contenido y comparación.
+- [ ] Verificar CI del commit de esta iteración.
+- [ ] Validación de formato PDF completo, firmas X.509, revocación y prestadores certificados: pendientes (fuera de la herramienta local).

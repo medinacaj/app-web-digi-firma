@@ -34,3 +34,9 @@ Fecha de inspección de base: 2026-10-25.
 
 ## Protección del repositorio
 Mantener el código privado. No activar GitHub Pages, dominios, CI de despliegue público ni herramientas externas con acceso al código sin autorización y análisis previo. No incluir datos personales reales ni credenciales en pruebas, incidencias o logs.
+
+## Calculadora de huella PDF en el navegador (herramienta, no firma)
+- Web Crypto calcula SHA-256 sobre bytes locales, sin transmitirlos al servidor.
+- La validación `%PDF-` solo comprueba cabecera, no parser, integridad de estructura ni seguridad del contenido.
+- Un hash coincidente solo permite afirmar igualdad de bytes en función de SHA-256; no prueba autoría, consentimiento, identidad, ni cumplimiento del Decreto-Ley 1.204.
+- Límite de 20 MiB antes de lectura y después, sin persistencia; no habilita custodia documental.

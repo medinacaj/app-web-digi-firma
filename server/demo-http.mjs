@@ -8,7 +8,8 @@ const staticFiles = Object.freeze({
   "/index.html": ["../index.html", "text/html; charset=utf-8"],
   "/assets/app.js": ["../assets/app.js", "text/javascript; charset=utf-8"],
   "/assets/app.css": ["../assets/app.css", "text/css; charset=utf-8"],
-  "/src/project.mjs": ["../src/project.mjs", "text/javascript; charset=utf-8"]
+  "/src/project.mjs": ["../src/project.mjs", "text/javascript; charset=utf-8"],
+  "/src/local-pdf.mjs": ["../src/local-pdf.mjs", "text/javascript; charset=utf-8"]
 });
 
 function securityHeaders() {
