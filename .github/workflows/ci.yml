@@ -21,6 +21,8 @@ jobs:
           node-version: "22"
       - name: Comprobar sintaxis
         run: |
+          node --check scripts/build-public.mjs
+          node --check tests/public-build.test.mjs
           node --check assets/site.js
           node --check assets/app.js
           node --check src/project.mjs
@@ -102,3 +104,24 @@ jobs:
           node-version: "22"
       - name: Probar sitio y panel con Chrome headless
         run: bash tests/browser-smoke.sh
+
+  public-package:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Crear paquete público con whitelist estricta
+        run: node scripts/build-public.mjs
+      - name: Verificar paquete y aislamiento
+        run: node --test tests/public-build.test.mjs
+      - name: Guardar paquete para revisión (no publicar)
+        uses: actions/upload-artifact@v4
+        with:
+          name: digifirma-ve-public-site
+          path: dist/public/
+          if-no-files-found: error
+          retention-days: 7
