@@ -1,6 +1,6 @@
 # Backend objetivo y reglas de implementación — Venezuela
 
-**Estado:** arquitectura de referencia y esquema SQL propuesto, **no desplegados ni probados contra PostgreSQL**. No sustituir el laboratorio sintético por este código sin conectar un backend autenticado, auditar seguridad y completar los bloqueos legales.
+**Estado:** arquitectura de referencia y esquema SQL propuesto, probado en PostgreSQL 16 efímero de GitHub Actions (#40228703172); **no desplegado ni conectado a una base persistente**. No sustituir el laboratorio sintético por este código sin conectar un backend autenticado, auditar seguridad y completar los bloqueos legales.
 
 ## Contratos de dominio implementados
 - `src/domain/authorization.mjs`: autorización por rol, actor de sesión verificada, organización y doble alcance VE, con denegación por defecto; las comprobaciones de sesión son *contratos*, no autentican al usuario por sí solas.

@@ -109,6 +109,6 @@ Para ejecutar ambos desde el laboratorio: `DIGIFIRMA_DEMO=1 node server/dev.mjs`
 
 ## Contratos de backend y esquema propuesto
 
-Se incluyeron módulos de **autorización por rol/organización y política VE** con denegación por defecto, más una máquina de estados de solicitudes de prueba que **no permite firmar**. También existe un esquema PostgreSQL 14+ **propuesto y no ejecutado** con controles `CHECK`, claves compuestas y RLS. No existen conexiones de base de datos, sesiones reales, autenticación ni despliegue de API de producción.
+Se incluyeron módulos de **autorización por rol/organización y política VE** con denegación por defecto, más una máquina de estados de solicitudes de prueba que **no permite firmar**. También existe un esquema PostgreSQL 14+ **probado en PostgreSQL 16 efímero de CI**, con controles `CHECK`, claves compuestas y RLS. No está desplegado ni integrado con una aplicación. No existen conexiones de base de datos, sesiones reales, autenticación ni despliegue de API de producción.
 
 Ver [plan de backend](docs/BACKEND-PLAN.md) y [migración SQL](db/migrations/001_base_ve.sql). Los contratos requieren actores derivados de sesiones verificadas por servidor, nunca desde el navegador. No usar la migración en producción sin tests de PostgreSQL y revisión especializada.

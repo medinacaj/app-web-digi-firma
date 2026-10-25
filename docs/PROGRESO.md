@@ -111,5 +111,5 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 ## Iteración 6.1 — Validación SQL efímera
 - [x] Añadido servicio PostgreSQL 16 de CI para ejecutar la migración SQL.
 - [x] Casos de prueba de aislamiento multitenant y denegación fuera de VE.
-- [ ] Confirmar resultado de CI y reparar incompatibilidades PostgreSQL, si aparecen.
+- [x] GitHub Actions #40228703172: jobs `checks` y `database` aprobados; migración SQL y pruebas RLS en PostgreSQL 16.
 - [ ] Auditar policies RLS y permisos de la identidad de runtime antes del primer despliegue.
