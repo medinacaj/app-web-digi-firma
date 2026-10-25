@@ -112,3 +112,6 @@ Para ejecutar ambos desde el laboratorio: `DIGIFIRMA_DEMO=1 node server/dev.mjs`
 Se incluyeron módulos de **autorización por rol/organización y política VE** con denegación por defecto, más una máquina de estados de solicitudes de prueba que **no permite firmar**. También existe un esquema PostgreSQL 14+ **probado en PostgreSQL 16 efímero de CI**, con controles `CHECK`, claves compuestas y RLS. No está desplegado ni integrado con una aplicación. No existen conexiones de base de datos, sesiones reales, autenticación ni despliegue de API de producción.
 
 Ver [plan de backend](docs/BACKEND-PLAN.md) y [migración SQL](db/migrations/001_base_ve.sql). Los contratos requieren actores derivados de sesiones verificadas por servidor, nunca desde el navegador. No usar la migración en producción sin tests de PostgreSQL y revisión especializada.
+
+## Contrato de API sin servidor productivo
+El módulo `server/api-contract.mjs` añade un controlador preparado para conectar **posteriormente** un proveedor de identidad y un repositorio de datos. Incluye listado mínimo de metadatos y creación de solicitudes sintéticas con validación de permisos y país VE. Bloquea la firma explícitamente y no escucha red por sí solo. Ver `docs/API.md`; ningún token de demostración es una credencial de producción.
