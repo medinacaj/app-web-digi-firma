@@ -16,7 +16,7 @@
 - [x] Interfaz e información de producto adaptadas a Venezuela.
 - [x] Documentación legal venezolana y eliminación del archivo legal del país anterior.
 - [x] Roadmap, arquitectura, seguridad y pruebas actualizadas para exclusividad venezolana.
-- [ ] Verificación del CI del commit de Venezuela (marcar al revisar resultado real).
+- [x] GitHub Actions verificado tras adaptación a VE: run 40224843820, conclusión success, commit 54583a2 (9/9 tests pasados).
 - [ ] Revisión de navegador y seguridad e2e.
 - [ ] Aprobación/fusión de PR #12.
 - [ ] Configuración de reglas de protección para `main`.
@@ -29,6 +29,7 @@
 - #2 gobernanza y protección GitHub; #3 producto; #4 arquitectura.
 - #5 identidad; #6 PDFs; #7 solicitudes; #8 firma y evidencia.
 - #9 certificación con PSC venezolano; #10 privacidad y legislación; #11 pruebas y lanzamiento.
+- #13 aplicación del mercado único VE en backend, base de datos y pruebas de integración.
 
 ## Definición de verificado
 Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicción en el prototipo; **no aseguran** que un backend inexistente excluya otras jurisdicciones ni que el servicio pueda firmar legalmente. Todas las funciones productivas siguen deshabilitadas hasta que exista identidad, documentos seguros, verificación y validación legal.
