@@ -128,3 +128,5 @@ node --test tests/public-build.test.mjs
 ```
 
 **Ningún despliegue se ha activado:** el proveedor de hosting debe admitir uso comercial y la conexión Vercel actual está en plan Hobby no comercial. Ver `docs/PUBLICACION-COMERCIAL.md`.
+
+El paquete también incluye `_headers` para Netlify/Cloudflare Pages. En Netlify Free es posible publicar un sitio comercial sin enlazar GitHub: generar `dist/public` y subir **únicamente esa carpeta** mediante Netlify Drop; el proyecto sigue necesitando revisión legal y el área `/app/` continúa deshabilitada. La publicación aún no se ha ejecutado.

@@ -12,11 +12,11 @@ Ejecutar desde la raíz con Node.js 22:
 ```bash
 node scripts/build-public.mjs
 ```
-Se crea `dist/public` con **exactamente seis archivos permitidos**: `index.html`, `app/index.html`, `assets/site.css`, `assets/site.js`, `robots.txt`, `vercel.json`.
+Se crea `dist/public` con **exactamente siete archivos permitidos**: `index.html`, `app/index.html`, `assets/site.css`, `assets/site.js`, `robots.txt`, `vercel.json`, `_headers`.
 
-No se exportan `src/`, `server/`, `db/`, `docs/`, `tests/`, `.github/`, `README.md`, claves o archivos de configuración privada. La landing tiene `index,follow`; el acceso `/app/` conserva `noindex`; sin sitemap hasta elegir dominio definitivo. Se añaden cabeceras de seguridad para Vercel, sujetas a revisión tras desplegar. GitHub Actions publica **solo un artifact privado de CI**, no un website público.
+No se exportan `src/`, `server/`, `db/`, `docs/`, `tests/`, `.github/`, `README.md`, claves o archivos de configuración privada. La landing tiene `index,follow`; el acceso `/app/` conserva `noindex`; sin sitemap hasta elegir dominio definitivo. Se añaden cabeceras de seguridad para Vercel, Netlify y Cloudflare Pages, sujetas a verificación HTTP tras desplegar. GitHub Actions publica **solo un artifact privado de CI**, no un website público.
 
-`vercel.json` es específico de Vercel. Para otro hosting deben replicarse cabeceras en su configuración sin exponer contenido adicional.
+`vercel.json` es específico de Vercel; `_headers` es compatible con Netlify y Cloudflare Pages. Netlify ofrece un plan Free que admite proyectos comerciales y permite publicar la carpeta precompilada mediante [Netlify Drop](https://app.netlify.com/drop), sin conectar GitHub. El operador debe crear o conectar su cuenta y revisar términos, créditos/límites y visibilidad antes de publicar. Para otros hostings deben replicarse cabeceras sin exponer contenido adicional.
 
 ## Hosting y contrato comercial
 La cuenta Vercel conectada aparece con plan **Hobby** (consulta del 25-10-2026). Sus condiciones restringen el uso a proyectos no comerciales. La oferta comercial exige otro plan/hosting: Vercel Pro o proveedor alternativo que permita actividad comercial. **No se contrató, actualizó ni desplegó nada**, porque iniciar Pro supone gastos y el usuario no ha elegido proveedor ni aprobado una compra.

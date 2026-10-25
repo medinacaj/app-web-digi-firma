@@ -86,12 +86,27 @@ const securityHeaders=[
   },
   {source:"/app/(.*)",headers:[{key:"X-Robots-Tag",value:"noindex, nofollow"}]}
 ];
+// _headers se aplica en Netlify y Cloudflare Pages sin conectar el repositorio privado.
+const staticHeaders = [
+  "/*",
+  "  X-Content-Type-Options: nosniff",
+  "  Referrer-Policy: strict-origin-when-cross-origin",
+  "  X-Frame-Options: DENY",
+  "  Permissions-Policy: camera=(), microphone=(), geolocation=()",
+  "  Content-Security-Policy: default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'",
+  "  Strict-Transport-Security: max-age=31536000; includeSubDomains",
+  "",
+  "/app/*",
+  "  X-Robots-Tag: noindex, nofollow",
+  ""
+].join(String.fromCharCode(10));
 const files = new Map([
  ["index.html",landing],
  ["app/index.html",publicApp],
  ["assets/site.css",publicCss],
  ["assets/site.js",publicJs],
  ["robots.txt","User-agent: *\nAllow: /\nDisallow: /app/\n"],
+ ["_headers",staticHeaders],
  ["vercel.json",JSON.stringify({version:2,headers:securityHeaders},null,2)+"\n"]
 ]);
 await rm(out,{recursive:true,force:true});

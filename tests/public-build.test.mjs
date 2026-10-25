@@ -23,7 +23,7 @@ test("paquete público expone solo assets aprobados sin backend ni repositorio",
     assert.equal(proc.status,0,proc.stderr);
     const paths=await collect(temp);
     assert.deepEqual(paths.sort(),[
-      "app/index.html","assets/site.css","assets/site.js","index.html","robots.txt","vercel.json"
+      "_headers","app/index.html","assets/site.css","assets/site.js","index.html","robots.txt","vercel.json"
     ].sort());
     const html=await readFile(join(temp,"index.html"),"utf8");
     assert.match(html, /<html lang="es-VE">/);
@@ -37,6 +37,9 @@ test("paquete público expone solo assets aprobados sin backend ni repositorio",
     assert.doesNotMatch(gate,/input.+type="file"|input.+type="password"|api\/v1/);
     const json=JSON.parse(await readFile(join(temp,"vercel.json"),"utf8"));
     assert.ok(json.headers.some(row=>row.headers.some(h=>h.key==="Content-Security-Policy")));
+    const headers=await readFile(join(temp,"_headers"),"utf8");
+    assert.match(headers,/X-Content-Type-Options: nosniff/);
+    assert.match(headers,/X-Robots-Tag: noindex, nofollow/);
     const script=await readFile(join(temp,"assets/site.js"),"utf8");
     assert.doesNotMatch(script,/api\/demo|api\/v1|Bearer |localStorage|analytics/);
   } finally {await rm(temp,{recursive:true,force:true});}

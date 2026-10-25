@@ -144,3 +144,5 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [ ] Abrir funciones reales de la app únicamente después de identidad, custodia y certificación pertinentes.
 
 Ver `docs/PUBLICACION-COMERCIAL.md`.
+
+- [x] Salida `_headers` para Netlify/Cloudflare Pages, evitando depender de Vercel Hobby para hosting comercial.
