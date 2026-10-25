@@ -6,10 +6,15 @@ import { DemoStore, DemoError } from "./demo-store.mjs";
 const staticFiles = Object.freeze({
   "/": ["../index.html", "text/html; charset=utf-8"],
   "/index.html": ["../index.html", "text/html; charset=utf-8"],
+  "/app/": ["../app/index.html", "text/html; charset=utf-8"],
+  "/app/index.html": ["../app/index.html", "text/html; charset=utf-8"],
+  "/assets/site.css": ["../assets/site.css", "text/css; charset=utf-8"],
+  "/assets/site.js": ["../assets/site.js", "text/javascript; charset=utf-8"],
   "/assets/app.js": ["../assets/app.js", "text/javascript; charset=utf-8"],
   "/assets/app.css": ["../assets/app.css", "text/css; charset=utf-8"],
   "/src/project.mjs": ["../src/project.mjs", "text/javascript; charset=utf-8"],
-  "/src/local-pdf.mjs": ["../src/local-pdf.mjs", "text/javascript; charset=utf-8"]
+  "/src/local-pdf.mjs": ["../src/local-pdf.mjs", "text/javascript; charset=utf-8"],
+  "/src/identity-format.mjs": ["../src/identity-format.mjs", "text/javascript; charset=utf-8"]
 });
 
 function securityHeaders() {

@@ -87,3 +87,13 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [ ] Faltan autenticación, custodia cifrada, firma, certificación, integración PSC, auditoría independiente y validación legal (#5–#10 y #13).
 
 **Estado honesto:** la base web está en `main`, pero Digi-Firma NO es un servicio de firma electrónica operativo. Los `release gates` continúan bloqueantes.
+
+## Iteración 5 — Sitio web + panel separado (en revisión)
+- [x] Sitio institucional estático en la raíz, con hero, propuesta de valor, funciones previstas, proceso, transparencia, FAQ y CTA a demostración.
+- [x] Interfaz existente conservada en `/app/`; herramientas sintéticas intactas.
+- [x] Recursos locales y sin trackers ni proveedores de fuentes externas; `noindex` hasta autorización expresa de publicación.
+- [x] Navegación móvil, skip-link, secciones semánticas y respeto de movimiento reducido.
+- [x] Servidor de laboratorio sirve el sitio, los módulos y las rutas de panel desde lista explícita.
+- [x] Pruebas HTTP/estructura actualizadas.
+- [ ] Validar CI de esta iteración, revisar experiencia visual en navegadores y pruebas WCAG.
+- [ ] Despliegue público deshabilitado; publicación sujeta a revisión y autorización.

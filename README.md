@@ -96,3 +96,13 @@ La función opera en un contexto seguro (`http://127.0.0.1:8787` o HTTPS) y es i
 ## Comprobación ilustrativa de formatos venezolanos
 
 La sección Configuración contiene un validador **local de estructura**, sin almacenar cédulas o RIF. Cédula: ejemplo V/E + 6–8 dígitos; RIF: letra + 9 dígitos. Su conjunto de prefijos conocidos es preliminar y no excluye otros oficialmente registrados. No se valida dígito de control ni se consulta SAIME/SENIAT; **no se acredita identidad, registro, domicilio, capacidad ni representación**. Para producción se requiere verificación mediante fuente autorizada y confirmación legal. Ver `src/identity-format.mjs`.
+
+## Sitio web y panel de trabajo
+
+El repositorio ahora separa:
+- **/**: sitio web informativo, diseño responsive, navegación accesible, FAQ, capacidades previstas y estado real. No recoge datos ni declara acreditaciones.
+- **/app/**: espacio de trabajo experimental con herramientas locales y laboratorio de borradores sintéticos.
+
+Para ejecutar ambos desde el laboratorio: `DIGIFIRMA_DEMO=1 node server/dev.mjs` y visitar `http://127.0.0.1:8787/` (sitio) o `http://127.0.0.1:8787/app/` (panel). También se pueden visualizar estáticamente con `python3 -m http.server 8000`, pero las operaciones del laboratorio requieren el servidor de desarrollo.
+
+**Despliegue público: NO habilitado.** El sitio está preparado en código pero no autoriza publicar las funciones de firma o recopilar datos. Los metadatos tienen `noindex` durante desarrollo; retirar ese bloqueo requiere una decisión de lanzamiento independiente.
