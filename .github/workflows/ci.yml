@@ -1,0 +1,44 @@
+name: Verificaciones
+
+on:
+  push:
+    branches: [main, "chore/**", "feat/**", "fix/**"]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Comprobar sintaxis
+        run: |
+          node --check assets/app.js
+          node --check src/project.mjs
+          node --check src/local-pdf.mjs
+          node --check tests/local-pdf.test.mjs
+          node --check tests/dev-guard.test.mjs
+          node --check tests/project.test.mjs
+          node --check server/demo-store.mjs
+          node --check server/demo-http.mjs
+          node --check server/dev.mjs
+          node --check tests/demo-store.test.mjs
+          node --check tests/demo-http.test.mjs
+      - name: Ejecutar pruebas
+        run: node --test
+      - name: Comprobar archivos fundamentales
+        run: |
+          test -s README.md
+          test -s index.html
+          test -s docs/PROGRESO.md
+          test -s docs/RELEASE-GATES.md
+          test -s SECURITY.md
+          test -s .github/CODEOWNERS
