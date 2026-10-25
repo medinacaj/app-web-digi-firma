@@ -115,3 +115,6 @@ Ver [plan de backend](docs/BACKEND-PLAN.md) y [migración SQL](db/migrations/001
 
 ## Contrato de API sin servidor productivo
 El módulo `server/api-contract.mjs` añade un controlador preparado para conectar **posteriormente** un proveedor de identidad y un repositorio de datos. Incluye listado mínimo de metadatos y creación de solicitudes sintéticas con validación de permisos y país VE. Bloquea la firma explícitamente y no escucha red por sí solo. Ver `docs/API.md`; ningún token de demostración es una credencial de producción.
+
+## Comprobación real de carga en navegador
+`tests/browser-smoke.sh` arranca el laboratorio sintético en `127.0.0.1` y usa Chrome headless en CI para inspeccionar el DOM de `/` y `/app/`. Comprueba que la portada, el panel y el estado del laboratorio carguen sin exponer archivos privados. **Es smoke test de Chromium, no auditoría visual completa ni WCAG.**
