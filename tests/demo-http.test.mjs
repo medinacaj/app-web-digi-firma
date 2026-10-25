@@ -18,6 +18,12 @@ test("GET muestra la UI local y cabeceras de seguridad", async () => withDemo(as
   const response = await fetch(origin + "/");
   assert.equal(response.status, 200);
   assert.match(await response.text(), /Venezuela exclusivamente/);
+  const appResponse = await fetch(origin + "/app/");
+  assert.equal(appResponse.status, 200);
+  assert.match(await appResponse.text(), /Prototipo no operativo/);
+  assert.equal((await fetch(origin + "/assets/site.css")).status, 200);
+  assert.equal((await fetch(origin + "/assets/site.js")).status, 200);
+  assert.equal((await fetch(origin + "/src/identity-format.mjs")).status, 200);
   assert.equal(response.headers.get("cache-control"), "no-store, max-age=0");
   assert.match(response.headers.get("content-security-policy"), /connect-src 'self'/);
   assert.equal(response.headers.get("x-frame-options"), "DENY");

@@ -3,128 +3,84 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Digi-Firma Venezuela: prototipo privado de gestión de firmas electrónicas para uso exclusivo en Venezuela.">
+  <meta name="theme-color" content="#f7f9fc">
+  <meta name="description" content="Digi-Firma Venezuela: plataforma de gestión documental y firma electrónica en desarrollo para el mercado venezolano. Conoce el proyecto y explora la demostración local.">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
-  <title>Digi-Firma Venezuela · Entorno de desarrollo</title>
-  <link rel="stylesheet" href="./assets/app.css">
-  <script type="module" src="./assets/app.js"></script>
+  <title>Digi-Firma Venezuela · Documentos con claridad, seguridad y control</title>
+  <link rel="stylesheet" href="./assets/site.css">
+  <script type="module" src="./assets/site.js"></script>
 </head>
 <body>
-<div class="shell">
-  <aside class="sidebar" id="sidebar" aria-label="Navegación principal">
-    <div class="logo-row"><span class="logo-mark" aria-hidden="true">D<span>F</span></span><div><strong>Digi-Firma</strong><small>Exclusivo para Venezuela</small></div></div>
-    <div class="workspace"><span class="workspace-icon" aria-hidden="true">D</span><span><strong>Digi-Firma Venezuela</strong><small>Mercado único · VE</small></span><span class="chevron" aria-hidden="true">⌄</span></div>
-    <div class="nav-heading">ESPACIO DE TRABAJO</div>
-    <nav class="navigation" aria-label="Módulos">
-      <button type="button" data-view="resumen" aria-current="page"><span aria-hidden="true">◫</span> Resumen</button>
-      <button type="button" data-view="documentos"><span aria-hidden="true">▤</span> Documentos</button>
-      <button type="button" data-view="solicitudes"><span aria-hidden="true">↗</span> Solicitudes</button>
-      <button type="button" data-view="auditoria"><span aria-hidden="true">◎</span> Auditoría</button>
+<a href="#principal" class="skip-link">Saltar al contenido</a>
+<div class="announcement" role="note"><span class="announcement-dot"></span> Plataforma exclusiva para Venezuela <span class="announcement-divider">·</span> Proyecto en desarrollo <a href="#estado">Ver estado <span aria-hidden="true">↗</span></a></div>
+<header class="header">
+  <div class="wrap nav">
+    <a href="./" class="brand" aria-label="Digi-Firma Venezuela, inicio"><span class="brand-symbol" aria-hidden="true"><span>DF</span></span><span>Digi<span class="brand-hyphen">-</span>Firma<small>VENEZUELA</small></span></a>
+    <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú"><span></span><span></span><span></span></button>
+    <nav id="site-nav" class="nav-links" aria-label="Navegación principal">
+      <a href="#funciones">Funcionalidades</a>
+      <a href="#proceso">Cómo funcionará</a>
+      <a href="#seguridad">Seguridad</a>
+      <a href="#preguntas">Preguntas frecuentes</a>
+      <a href="./app/" class="nav-cta">Explorar el prototipo <span aria-hidden="true">↗</span></a>
     </nav>
-    <div class="nav-heading second">SISTEMA</div>
-    <nav class="navigation" aria-label="Sistema"><button type="button" data-view="configuracion"><span aria-hidden="true">⚙</span> Configuración</button></nav>
-    <div class="sidebar-bottom"><span class="sidebar-status-dot"></span><div><strong>Fase 0 · Prototipo</strong><small>Sin servicios de firma activos</small></div></div>
-  </aside>
-
-  <main class="content">
-    <header class="topbar">
-      <div class="topbar-left"><button id="menu-toggle" class="menu-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir navegación">☰</button><span class="breadcrumb">Espacio de trabajo</span><span class="slash">/</span><strong id="crumb-title">Resumen</strong></div>
-      <div class="topbar-right"><span class="environment-pill"><span class="tiny-dot"></span> VE · Desarrollo</span><div class="avatar" title="Entorno de demostración" aria-label="Prototipo sin sesión">DF</div></div>
-    </header>
-
-    <div class="main-inner">
-      <div class="notice" role="status"><strong>Venezuela exclusivamente · Prototipo no operativo.</strong> No permite subir, firmar ni almacenar documentos reales. No hay usuarios autenticados ni backend.</div>
-      <div class="page-heading"><div><p class="eyebrow">DIGI-FIRMA / VENEZUELA / FASE 0</p><h1 id="page-title">Resumen general</h1><p id="page-summary">La base inicial de una plataforma de firma electrónica enfocada exclusivamente en Venezuela.</p></div><button type="button" class="primary-action" disabled title="Se habilitará cuando exista backend, autenticación y seguridad">+ Nueva solicitud <span class="button-lock" aria-hidden="true">· Próximamente</span></button></div>
-
-      <section class="view" id="view-resumen" aria-label="Resumen general">
-        <div class="jurisdiction-info" role="note"><strong>Jurisdicción: Venezuela (VE)</strong><span>Marco regulatorio de referencia: Decreto-Ley sobre Mensajes de Datos y Firmas Electrónicas (N.º 1.204) y SUSCERTE. Cumplimiento pendiente de validación jurídica.</span></div>
-        <div class="metric-grid">
-          <article class="metric"><p>Documentos reales</p><strong>0</strong><small>Almacenamiento no implementado</small></article>
-          <article class="metric"><p>Solicitudes enviadas</p><strong>0</strong><small>Motor de firma no implementado</small></article>
-          <article class="metric"><p>Firmas verificadas</p><strong>0</strong><small>Verificación aún no disponible</small></article>
-          <article class="metric"><p>Eventos de auditoría</p><strong>0</strong><small>Bitácora por implementar</small></article>
-        </div>
-
-        <div class="dashboard-grid">
-          <article class="panel wide">
-            <div class="panel-head"><div><span class="section-kicker">DESARROLLO</span><h2>Estado del proyecto</h2></div><span class="tag">En preparación</span></div>
-            <p class="panel-description">Seguimiento de hitos técnicos, no de documentos o firmas.</p>
-            <div class="progress-track" role="progressbar" aria-label="Hitos completados" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-fill"></div></div>
-            <div class="progress-legend"><strong id="progress-copy">0 de 0 hitos completados</strong><span id="progress-pct">0%</span></div>
-            <ol class="milestone-list" id="milestone-list"></ol>
-          </article>
-          <article class="panel right-panel">
-            <div class="panel-head"><div><span class="section-kicker">PRIORIDADES</span><h2>Antes de firmar</h2></div></div>
-            <p class="panel-description">No habilitar firmas reales hasta completar estos controles.</p>
-            <div class="checklist"><div><span class="check empty" aria-hidden="true"></span><span><strong>Identidad y permisos</strong><small>Sesiones seguras y acceso por organización</small></span></div><div><span class="check empty" aria-hidden="true"></span><span><strong>Documentos protegidos</strong><small>Cifrado, custodia y retención</small></span></div><div><span class="check empty" aria-hidden="true"></span><span><strong>Evidencia verificable</strong><small>Consentimiento, eventos y huellas</small></span></div><div><span class="check empty" aria-hidden="true"></span><span><strong>Validación jurídica</strong><small>Requisitos del Decreto-Ley 1.204 y PSC acreditados por SUSCERTE</small></span></div></div>
-            <p class="footnote">Estado: ninguno de estos controles está implementado.</p>
-          </article>
-        </div>
-        <div class="section-row"><h2>Capacidades previstas</h2><span>Disponibilidad real, sin simulaciones</span></div>
-        <div class="feature-grid"><article class="feature"><div class="feature-icon">01</div><h3>Preparar documentos</h3><p>Cargar, validar y organizar archivos PDF de manera segura.</p><span class="soft-label">Pendiente</span></article><article class="feature"><div class="feature-icon">02</div><h3>Invitar firmantes</h3><p>Definir destinatarios en Venezuela, orden, identidad y consentimiento.</p><span class="soft-label">Pendiente</span></article><article class="feature"><div class="feature-icon">03</div><h3>Verificar evidencia</h3><p>Consultar integridad, trazas y constancias de firma.</p><span class="soft-label">Pendiente</span></article></div>
-      </section>
-
-      <section class="view" id="view-documentos" aria-label="Documentos" hidden>
-      <article class="panel demo-panel">
-        <div class="panel-head"><div><span class="section-kicker">INTEGRIDAD LOCAL · SIN ENVÍO</span><h2>Huella SHA-256 de un PDF</h2></div><span class="tag">Solo en el navegador</span></div>
-        <p class="panel-description">Calcula la huella de un PDF de hasta 20 MiB, sin subirlo, almacenarlo o enviarlo. La coincidencia de huellas NO valida la autoría, ni convierte un documento en firmado o certificado.</p>
-        <div class="demo-form hash-form">
-          <label for="pdf-local">PDF local</label>
-          <input type="file" id="pdf-local" accept=".pdf,application/pdf">
-          <button type="button" id="pdf-hash" disabled>Calcular huella</button>
-        </div>
-        <p id="hash-status" role="status" aria-live="polite" class="demo-feedback">Selecciona un archivo para comenzar.</p>
-        <div class="hash-display"><label for="hash-result">SHA-256 calculado</label><output id="hash-result">Sin cálculo</output></div>
-        <div class="demo-form hash-form">
-          <label for="hash-expected">SHA-256 esperado (opcional)</label>
-          <input id="hash-expected" type="text" inputmode="text" maxlength="64" autocomplete="off" spellcheck="false" placeholder="64 caracteres hexadecimales">
-          <button type="button" id="hash-compare" disabled>Comparar</button>
-        </div>
-        <p id="hash-compare-status" class="demo-feedback" role="status" aria-live="polite">Compara huellas, no firmas electrónicas.</p>
-      </article>
-    </section>
-      <section class="view" id="view-solicitudes" aria-label="Solicitudes" hidden>
-        <article class="panel demo-panel">
-          <div class="panel-head"><div><span class="section-kicker">SOLO DATOS SINTÉTICOS</span><h2>Laboratorio local de solicitudes</h2></div><span class="tag">Sin firmas ni documentos reales</span></div>
-          <p class="panel-description">Ensaya la preparación y cancelación de borradores con plantillas ficticias. No identifica personas, no envía mensajes, no firma documentos ni guarda información al cerrar el servidor.</p>
-          <div class="demo-form">
-            <label for="demo-template">Plantilla ficticia</label>
-            <select id="demo-template" disabled><option value="acuerdo-demo">Acuerdo simulado de servicios</option><option value="solicitud-demo">Solicitud administrativa ficticia</option></select>
-            <button type="button" id="demo-create" disabled>Crear borrador de prueba</button>
-          </div>
-          <p id="demo-feedback" class="demo-feedback" role="status" aria-live="polite">El laboratorio requiere el servidor local de demostración.</p>
-          <div class="panel-head"><h2>Borradores de prueba</h2><span id="demo-count" class="tag">0</span></div>
-          <ol id="demo-drafts" class="demo-items"><li>Sin borradores de prueba.</li></ol>
-        </article>
-      </section>
-      <section class="view" id="view-auditoria" aria-label="Auditoría" hidden>
-        <article class="panel demo-panel">
-          <div class="panel-head"><div><span class="section-kicker">LABORATORIO · NO CERTIFICADO</span><h2>Historial de eventos simulados</h2></div><span id="demo-integrity" class="tag">Sin eventos</span></div>
-          <p class="panel-description">Este registro usa hashes SHA-256 enlazados solo para demostrar detección de cambios en memoria. No es auditoría inmutable, sello de tiempo confiable ni evidencia de firma electrónica.</p>
-          <ol id="demo-events" class="demo-items"><li>Sin eventos simulados.</li></ol>
-        </article>
-      </section>
-      <section class="view" id="view-configuracion" aria-label="Configuración" hidden>
-        <article class="panel demo-panel">
-          <div class="panel-head"><div><span class="section-kicker">FORMATO LOCAL · NO VERIFICACIÓN</span><h2>Identificación venezolana</h2></div><span class="tag">Sin enviar datos</span></div>
-          <p class="panel-description">Revisa únicamente la estructura básica de una cédula o RIF. No consulta SAIME ni SENIAT, no comprueba la existencia del documento, su dígito verificador, ni la identidad o representación legal. Puedes utilizar ejemplos ficticios; no ingreses datos personales reales en este entorno de pruebas.</p>
-          <div class="demo-form identity-form">
-            <label for="identity-type">Tipo</label>
-            <select id="identity-type"><option value="cedula">Cédula de identidad</option><option value="rif">RIF</option></select>
-            <label for="identity-value">Ejemplo de formato</label>
-            <input id="identity-value" type="text" maxlength="20" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="V-1234567">
-            <button type="button" id="identity-check">Revisar formato</button>
-          </div>
-          <p id="identity-status" class="demo-feedback" role="status" aria-live="polite">La información se procesa en el navegador y no se guarda.</p>
-          <div class="divider-soft"></div>
-          <div class="panel-head"><h2>Administración de organizaciones</h2><span class="tag">Pendiente</span></div>
-          <p class="panel-description">Registro, inicio de sesión, verificación de identidad, facultades de representación, roles y permisos requieren backend y revisión jurídica antes de habilitarse.</p>
-        </article>
-      </section>
-      <footer class="footer">Digi-Firma Venezuela · Proyecto privado en desarrollo <span>Jurisdicción VE · Sin firma electrónica operativa</span></footer>
+  </div>
+</header>
+<main id="principal">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-copy">
+      <span class="eyebrow"><span class="eyebrow-line"></span> UN FUTURO MÁS SIMPLE PARA TUS DOCUMENTOS</span>
+      <h1 id="hero-title">Los acuerdos<br> avanzan mejor <em>sin papel.</em></h1>
+      <p>Estamos construyendo un espacio para preparar, organizar y gestionar documentos electrónicos con trazabilidad, enfocado exclusivamente en Venezuela.</p>
+      <div class="hero-actions"><a class="button button-primary" href="./app/">Conocer la demostración <span aria-hidden="true">↗</span></a><a class="button button-plain" href="#funciones">Explorar funciones <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-note"><span class="hero-note-icon" aria-hidden="true">i</span><span>Versión de desarrollo. Aún no permite realizar firmas electrónicas reales ni certificadas.</span></div>
     </div>
-  </main>
-</div>
+    <div class="hero-visual" aria-label="Vista ilustrativa de la interfaz de gestión documental. No representa datos ni documentos reales.">
+      <div class="hero-glow"></div>
+      <div class="preview-window">
+        <div class="preview-head"><div class="preview-brand"><span class="preview-logo">DF</span><b>Digi-Firma</b><span> / Espacio de trabajo</span></div><div class="preview-profile">VE</div></div>
+        <div class="preview-body"><div class="preview-aside"><span class="preview-nav active">▤ <span>Resumen</span></span><span class="preview-nav">▧ <span>Documentos</span></span><span class="preview-nav">↗ <span>Solicitudes</span></span><span class="preview-nav">◎ <span>Auditoría</span></span><div class="preview-aside-foot">Solo demostración</div></div>
+          <div class="preview-content"><div class="preview-label">ESPACIO DE TRABAJO · VENEZUELA</div><div class="preview-heading">Tus documentos, organizados.</div><div class="preview-subtitle">Un vistazo al diseño de la plataforma.</div>
+            <div class="preview-stats"><div><span>Documentos reales</span><strong>0</strong><small>No disponible</small></div><div><span>Firmas verificadas</span><strong>0</strong><small>No disponible</small></div></div>
+            <div class="preview-document"><span class="preview-file">▤</span><div><b>Tu espacio de documentos</b><small>Preparado para el desarrollo</small></div><span class="preview-pill">Próximamente</span></div>
+            <div class="preview-lines"><span></span><span></span><span></span></div>
+          </div>
+        </div>
+      </div>
+      <div class="float-card"><span class="float-icon">◇</span><div><b>Diseñado para Venezuela</b><small>Interfaz y alcance local</small></div><span class="float-tick">✓</span></div>
+    </div>
+  </section>
+
+  <section class="benefit-bar"><div class="wrap benefit-grid"><div><span>01</span><strong>Una experiencia clara</strong><small>Flujos diseñados para ser comprensibles</small></div><div><span>02</span><strong>Documentos bajo control</strong><small>Privacidad desde la arquitectura</small></div><div><span>03</span><strong>Enfoque venezolano</strong><small>Sin mercados ni normas ajenas</small></div></div></section>
+
+  <section id="funciones" class="section wrap" aria-labelledby="features-title">
+    <div class="section-top"><div><span class="section-kicker">LO QUE ESTAMOS CONSTRUYENDO</span><h2 id="features-title">Todo el flujo documental.<br><em>Un solo lugar.</em></h2></div><p>Diseñamos herramientas conectadas para que preparar un documento, gestionar participantes y consultar su historial sea más sencillo. Estas funciones productivas están en desarrollo.</p></div>
+    <div class="feature-cards">
+      <article class="feature-card"><span class="feature-number">01 / PREPARAR</span><div class="feature-glyph blue">▤</div><h3>Documentos organizados</h3><p>Gestión de archivos, versiones y acceso por permisos. La custodia segura de documentos reales está pendiente.</p><span class="feature-status">En desarrollo</span></article>
+      <article class="feature-card"><span class="feature-number">02 / COLABORAR</span><div class="feature-glyph purple">↗</div><h3>Solicitudes de firma</h3><p>Planeamos flujos con destinatarios, consentimiento y seguimiento. Aún no se pueden enviar solicitudes reales.</p><span class="feature-status">En desarrollo</span></article>
+      <article class="feature-card"><span class="feature-number">03 / COMPROBAR</span><div class="feature-glyph mint">◎</div><h3>Trazabilidad y evidencia</h3><p>Diseñamos un historial verificable de las acciones. Los registros actuales son únicamente demostrativos.</p><span class="feature-status">En desarrollo</span></article>
+    </div>
+  </section>
+
+  <section id="proceso" class="process-section"><div class="wrap process-grid"><div><span class="section-kicker light">UN PROCESO MÁS CLARO</span><h2>Menos pasos.<br><em>Más claridad.</em></h2><p>La experiencia prevista seguirá un camino simple, sin renunciar a la verificación y el control que exige cada tipo de documento.</p><a href="./app/" class="link-light">Ver interfaz de desarrollo <span aria-hidden="true">↗</span></a></div><ol class="process-list"><li><span>01</span><div><h3>Prepara</h3><p>Organiza el documento que necesita revisión y firma.</p></div></li><li><span>02</span><div><h3>Configura</h3><p>Establece quién debe participar y en qué orden.</p></div></li><li><span>03</span><div><h3>Verifica</h3><p>Comprueba el estado y la evidencia disponible.</p></div></li></ol></div></section>
+
+  <section id="seguridad" class="section wrap security-grid">
+    <div class="security-art" aria-hidden="true"><div class="shield-orbit outer"></div><div class="shield-orbit middle"></div><div class="shield-inner">◇</div><span class="shield-label upper">PRIVACIDAD</span><span class="shield-label lower">INTEGRIDAD</span></div>
+    <div class="security-copy"><span class="section-kicker">SEGURIDAD DESDE EL DISEÑO</span><h2>La confianza no<br>se improvisa.</h2><p>El desarrollo contempla permisos por documento, custodia privada, protección de identidad y controles criptográficos. Estas medidas deberán implementarse y auditarse antes de utilizar la plataforma con datos reales.</p><ul><li>Privacidad y acceso mínimo como requisitos de diseño</li><li>Integridad verificable de documentos y eventos</li><li>Marco jurídico venezolano y evaluación de prestadores acreditados</li></ul></div>
+  </section>
+
+  <section id="estado" class="status-section"><div class="wrap status-card"><div><span class="section-kicker">TRANSPARENCIA DEL PROYECTO</span><h2>Estamos construyéndolo con cuidado.</h2><p>Ya existe una interfaz navegable y herramientas locales de demostración. La autenticación real, la custodia de PDFs y el servicio de firma electrónica continúan pendientes.</p></div><div class="status-side"><span class="status-pill"><i></i> Versión preliminar</span><a class="button button-primary" href="./app/">Abrir prototipo <span aria-hidden="true">↗</span></a></div></div></section>
+
+  <section id="preguntas" class="section wrap faq" aria-labelledby="faq-title"><div class="section-top"><div><span class="section-kicker">PREGUNTAS FRECUENTES</span><h2 id="faq-title">Lo importante,<br><em>sin letra pequeña.</em></h2></div></div><div class="faq-list">
+    <details><summary>¿Digi-Firma ya permite firmar documentos electrónicos?</summary><p>No. En esta etapa solo existe una interfaz en desarrollo y herramientas de prueba. No se genera una firma electrónica real ni certificada.</p></details>
+    <details><summary>¿Está diseñada para usuarios fuera de Venezuela?</summary><p>No. El mercado del producto es exclusivamente Venezuela. La elegibilidad de firmantes y operaciones debe determinarse jurídicamente por caso, no por la dirección IP.</p></details>
+    <details><summary>¿Digi-Firma está acreditada por SUSCERTE?</summary><p>No se ha obtenido ni afirmado una acreditación. Si se ofrece certificación electrónica en el futuro, deberá evaluarse la integración con un prestador acreditado y el marco jurídico aplicable.</p></details>
+    <details><summary>¿Qué puedo probar ahora?</summary><p>Puedes explorar el espacio de trabajo, crear borradores ficticios en un servidor local y calcular huellas SHA-256 de PDFs directamente en el navegador, sin transmitirlos.</p></details>
+  </div></section>
+
+  <section class="closing-section"><div class="wrap closing"><span>UN NUEVO ESPACIO PARA VENEZUELA</span><h2>Los documentos del mañana<br>empiezan con una mejor experiencia.</h2><a href="./app/" class="button button-white">Explorar Digi-Firma <span aria-hidden="true">↗</span></a><p>Prototipo · Sin funciones de firma electrónica operativas</p></div></section>
+</main>
+<footer class="footer"><div class="wrap footer-main"><div><a class="brand" href="./"><span class="brand-symbol" aria-hidden="true"><span>DF</span></span><span>Digi-Firma<small>VENEZUELA</small></span></a><p>Una plataforma en construcción para simplificar el flujo documental en Venezuela.</p></div><nav aria-label="Enlaces del pie"><a href="#funciones">Funcionalidades</a><a href="#seguridad">Seguridad</a><a href="#preguntas">Preguntas frecuentes</a><a href="./app/">Prototipo</a></nav></div><div class="wrap footer-bottom"><span>© <span id="copyright-year">2026</span> Digi-Firma · Proyecto en desarrollo</span><span>Hecho para Venezuela · Sin certificación electrónica activa</span></div></footer>
 </body>
 </html>

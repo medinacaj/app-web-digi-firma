@@ -15,8 +15,11 @@ test("la interfaz indica el carácter exclusivo venezolano y el estado no operat
   const html = read("index.html");
   assert.match(html, /<html lang="es-VE">/);
   assert.match(html, /Venezuela exclusivamente/);
-  assert.match(html, /Prototipo no operativo/);
-  assert.match(html, /disabled title="Se habilitará/);
+  assert.match(html, /Venezuela exclusivamente/);
+  assert.match(html, /aún no permite realizar firmas electrónicas reales/);
+  const app = read("app/index.html");
+  assert.match(app, /Prototipo no operativo/);
+  assert.match(app, /disabled title="Se habilitará/);
 });
 
 test("el README identifica jurisdicción y regulación venezolana", () => {
