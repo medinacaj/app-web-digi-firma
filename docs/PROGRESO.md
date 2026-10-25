@@ -95,5 +95,21 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [x] Navegación móvil, skip-link, secciones semánticas y respeto de movimiento reducido.
 - [x] Servidor de laboratorio sirve el sitio, los módulos y las rutas de panel desde lista explícita.
 - [x] Pruebas HTTP/estructura actualizadas.
-- [ ] Validar CI de esta iteración, revisar experiencia visual en navegadores y pruebas WCAG.
+- [x] CI de sitio web #40228076144: success (PR #16).
+- [ ] Revisión visual en navegadores y pruebas WCAG pendientes.
 - [ ] Despliegue público deshabilitado; publicación sujeta a revisión y autorización.
+
+## Iteración 6 — Dominio de autorización y contratos de backend
+- [x] Control de organización y jurisdicción `VE` en biblioteca de dominio con denegación por defecto.
+- [x] Política de permisos diferenciados owner/admin/member/auditor, con pruebas negativas.
+- [x] Máquina de estados de solicitudes preparatorias sintéticas, sin firma real.
+- [x] SQL propuesto con restricciones VE, claves compuestas y RLS. **No conectado ni ejecutado; no cuenta como backend de producción**.
+- [x] Documento de arquitectura y lista de pruebas de seguridad PostgreSQL.
+- [ ] Integrar proveedor de sesiones y almacenamiento cifrado productivo. La migración se prueba en PostgreSQL efímero CI, no en infraestructura real.
+- [ ] CI de esta iteración pendiente de verificación.
+
+## Iteración 6.1 — Validación SQL efímera
+- [x] Añadido servicio PostgreSQL 16 de CI para ejecutar la migración SQL.
+- [x] Casos de prueba de aislamiento multitenant y denegación fuera de VE.
+- [x] GitHub Actions #40228703172: jobs `checks` y `database` aprobados; migración SQL y pruebas RLS en PostgreSQL 16.
+- [ ] Auditar policies RLS y permisos de la identidad de runtime antes del primer despliegue.

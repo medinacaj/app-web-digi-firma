@@ -106,3 +106,9 @@ El repositorio ahora separa:
 Para ejecutar ambos desde el laboratorio: `DIGIFIRMA_DEMO=1 node server/dev.mjs` y visitar `http://127.0.0.1:8787/` (sitio) o `http://127.0.0.1:8787/app/` (panel). También se pueden visualizar estáticamente con `python3 -m http.server 8000`, pero las operaciones del laboratorio requieren el servidor de desarrollo.
 
 **Despliegue público: NO habilitado.** El sitio está preparado en código pero no autoriza publicar las funciones de firma o recopilar datos. Los metadatos tienen `noindex` durante desarrollo; retirar ese bloqueo requiere una decisión de lanzamiento independiente.
+
+## Contratos de backend y esquema propuesto
+
+Se incluyeron módulos de **autorización por rol/organización y política VE** con denegación por defecto, más una máquina de estados de solicitudes de prueba que **no permite firmar**. También existe un esquema PostgreSQL 14+ **probado en PostgreSQL 16 efímero de CI**, con controles `CHECK`, claves compuestas y RLS. No está desplegado ni integrado con una aplicación. No existen conexiones de base de datos, sesiones reales, autenticación ni despliegue de API de producción.
+
+Ver [plan de backend](docs/BACKEND-PLAN.md) y [migración SQL](db/migrations/001_base_ve.sql). Los contratos requieren actores derivados de sesiones verificadas por servidor, nunca desde el navegador. No usar la migración en producción sin tests de PostgreSQL y revisión especializada.
