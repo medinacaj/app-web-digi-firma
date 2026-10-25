@@ -1,7 +1,7 @@
 # Arquitectura de Digi-Firma Venezuela
 
 ## Fase 0 — estado implementado
-Sitio estático HTML, CSS y JavaScript. Sin backend, almacenamiento, autenticación ni proveedor de certificación. La configuración declarativa `countryCode: "VE"` **NO impone límites en un servicio real** porque ese servicio todavía no existe.
+Interfaz HTML/CSS/JavaScript con herramienta SHA-256 de PDF en el navegador, revisión local de estructura de identificadores VE y servidor de **demostración local** con borradores sintéticos (en memoria). No hay backend productivo, custodia documental, autenticación real ni proveedor de certificación. La configuración declarativa `countryCode: "VE"` y la validación del laboratorio **NO imponen límites en un servicio productivo**, que todavía no existe.
 
 ## Restricción de mercado
 - **País único:** Venezuela (código ISO 3166-1 alpha-2 `VE`).
