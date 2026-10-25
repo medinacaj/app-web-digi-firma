@@ -74,5 +74,5 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [x] Funciones de normalización/estructura de cédula y RIF, sin consulta de registro ni dígito verificador.
 - [x] Interfaz demostrativa local y borrado inmediato del campo tras comprobarlo.
 - [x] Pruebas unitarias de entradas válidas e inválidas.
-- [ ] CI de esta iteración pendiente de confirmar.
+- [x] GitHub Actions #40226355180 completado correctamente; PR #14 documenta cambios de formato local.
 - [ ] Verificación oficial SAIME/SENIAT, autenticación y atribución de identidad siguen pendientes.
