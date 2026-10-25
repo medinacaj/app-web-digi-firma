@@ -34,7 +34,7 @@ Plataforma web de gestión del ciclo de firma electrónica para particulares, pr
 
 ## No hacer
 - No anunciar “firma electrónica certificada” ni homologación/autorización de SUSCERTE sin acreditación y pruebas.
-- No trasladar las categorías jurídicas “firma electrónica simple/avanzada” de Chile al régimen venezolano.
+- No trasladar categorías jurídicas de firma electrónica de otras jurisdicciones al régimen venezolano.
 - No asumir que firmar electrónicamente sustituye registro, notaría o formalidades de actos específicos.
 - No registrar usuarios reales, cargar PDFs o recopilar cédulas/RIF en este prototipo.
 - No abrir mercados internacionales por error de configuración, traducción o API.
