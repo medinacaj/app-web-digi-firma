@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Digi-Firma: prototipo privado de interfaz para gestionar el ciclo de firma electrónica.">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; base-uri 'none'; form-action 'none'">
+  <title>Digi-Firma · Entorno de desarrollo</title>
+  <link rel="stylesheet" href="./assets/app.css">
+  <script type="module" src="./assets/app.js"></script>
+</head>
+<body>
+<div class="shell">
+  <aside class="sidebar" id="sidebar" aria-label="Navegación principal">
+    <div class="logo-row"><span class="logo-mark" aria-hidden="true">D<span>F</span></span><div><strong>Digi-Firma</strong><small>Espacio de trabajo</small></div></div>
+    <div class="workspace"><span class="workspace-icon" aria-hidden="true">D</span><span><strong>Proyecto principal</strong><small>Entorno de desarrollo</small></span><span class="chevron" aria-hidden="true">⌄</span></div>
+    <div class="nav-heading">ESPACIO DE TRABAJO</div>
+    <nav class="navigation" aria-label="Módulos">
+      <button type="button" data-view="resumen" aria-current="page"><span aria-hidden="true">◫</span> Resumen</button>
+      <button type="button" data-view="documentos"><span aria-hidden="true">▤</span> Documentos</button>
+      <button type="button" data-view="solicitudes"><span aria-hidden="true">↗</span> Solicitudes</button>
+      <button type="button" data-view="auditoria"><span aria-hidden="true">◎</span> Auditoría</button>
+    </nav>
+    <div class="nav-heading second">SISTEMA</div>
+    <nav class="navigation" aria-label="Sistema"><button type="button" data-view="configuracion"><span aria-hidden="true">⚙</span> Configuración</button></nav>
+    <div class="sidebar-bottom"><span class="sidebar-status-dot"></span><div><strong>Fase 0 · Prototipo</strong><small>Sin servicios de firma activos</small></div></div>
+  </aside>
+
+  <main class="content">
+    <header class="topbar">
+      <div class="topbar-left"><button id="menu-toggle" class="menu-toggle" aria-controls="sidebar" aria-expanded="false" aria-label="Abrir navegación">☰</button><span class="breadcrumb">Espacio de trabajo</span><span class="slash">/</span><strong id="crumb-title">Resumen</strong></div>
+      <div class="topbar-right"><span class="environment-pill"><span class="tiny-dot"></span> Desarrollo</span><div class="avatar" title="Entorno de demostración" aria-label="Prototipo sin sesión">DF</div></div>
+    </header>
+
+    <div class="main-inner">
+      <div class="notice" role="status"><strong>Prototipo no operativo.</strong> No permite subir, firmar ni almacenar documentos reales. No hay usuarios autenticados ni backend.</div>
+      <div class="page-heading"><div><p class="eyebrow">DIGI-FIRMA / FASE 0</p><h1 id="page-title">Resumen general</h1><p id="page-summary">La base inicial para una experiencia de firma digital segura y trazable.</p></div><button type="button" class="primary-action" disabled title="Se habilitará cuando exista backend, autenticación y seguridad">+ Nueva solicitud <span class="button-lock" aria-hidden="true">· Próximamente</span></button></div>
+
+      <section class="view" id="view-resumen" aria-label="Resumen general">
+        <div class="metric-grid">
+          <article class="metric"><p>Documentos reales</p><strong>0</strong><small>Almacenamiento no implementado</small></article>
+          <article class="metric"><p>Solicitudes enviadas</p><strong>0</strong><small>Motor de firma no implementado</small></article>
+          <article class="metric"><p>Firmas verificadas</p><strong>0</strong><small>Verificación aún no disponible</small></article>
+          <article class="metric"><p>Eventos de auditoría</p><strong>0</strong><small>Bitácora por implementar</small></article>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="panel wide">
+            <div class="panel-head"><div><span class="section-kicker">DESARROLLO</span><h2>Estado del proyecto</h2></div><span class="tag">En preparación</span></div>
+            <p class="panel-description">Seguimiento de hitos técnicos, no de documentos o firmas.</p>
+            <div class="progress-track" role="progressbar" aria-label="Hitos completados" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div id="progress-fill"></div></div>
+            <div class="progress-legend"><strong id="progress-copy">0 de 0 hitos completados</strong><span id="progress-pct">0%</span></div>
+            <ol class="milestone-list" id="milestone-list"></ol>
+          </article>
+          <article class="panel right-panel">
+            <div class="panel-head"><div><span class="section-kicker">PRIORIDADES</span><h2>Antes de firmar</h2></div></div>
+            <p class="panel-description">No habilitar firmas reales hasta completar estos controles.</p>
+            <div class="checklist"><div><span class="check empty" aria-hidden="true"></span><span><strong>Identidad y permisos</strong><small>Sesiones seguras y acceso por organización</small></span></div><div><span class="check empty" aria-hidden="true"></span><span><strong>Documentos protegidos</strong><small>Cifrado, custodia y retención</small></span></div><div><span class="check empty" aria-hidden="true"></span><span><strong>Evidencia verificable</strong><small>Consentimiento, eventos y huellas</small></span></div><div><span class="check empty" aria-hidden="true"></span><span><strong>Validación jurídica</strong><small>Firma simple y prestador FEA acreditado</small></span></div></div>
+            <p class="footnote">Estado: ninguno de estos controles está implementado.</p>
+          </article>
+        </div>
+        <div class="section-row"><h2>Capacidades previstas</h2><span>Disponibilidad real, sin simulaciones</span></div>
+        <div class="feature-grid"><article class="feature"><div class="feature-icon">01</div><h3>Preparar documentos</h3><p>Cargar, validar y organizar archivos PDF de manera segura.</p><span class="soft-label">Pendiente</span></article><article class="feature"><div class="feature-icon">02</div><h3>Invitar firmantes</h3><p>Definir destinatarios, orden, identidad y consentimiento.</p><span class="soft-label">Pendiente</span></article><article class="feature"><div class="feature-icon">03</div><h3>Verificar evidencia</h3><p>Consultar integridad, trazas y constancias de firma.</p><span class="soft-label">Pendiente</span></article></div>
+      </section>
+
+      <section class="view" id="view-documentos" aria-label="Documentos" hidden><div class="empty-state"><div class="empty-symbol">▤</div><h2>Sin documentos</h2><p>La custodia de archivos, cifrado, permisos y eliminación segura aún no están implementados. Este prototipo no acepta documentos.</p><span class="tag">Módulo planificado</span></div></section>
+      <section class="view" id="view-solicitudes" aria-label="Solicitudes" hidden><div class="empty-state"><div class="empty-symbol">↗</div><h2>Solicitudes aún no disponibles</h2><p>El envío a firmantes solo se habilitará con autenticación, evidencia de consentimiento y medidas antifraude verificadas.</p><span class="tag">Módulo planificado</span></div></section>
+      <section class="view" id="view-auditoria" aria-label="Auditoría" hidden><div class="empty-state"><div class="empty-symbol">◎</div><h2>Sin eventos de auditoría</h2><p>Se diseñará un registro de eventos resistente a alteraciones, con integridad comprobable, sellos temporales y controles de acceso.</p><span class="tag">Módulo planificado</span></div></section>
+      <section class="view" id="view-configuracion" aria-label="Configuración" hidden><div class="empty-state"><div class="empty-symbol">⚙</div><h2>Configuración protegida</h2><p>La gestión de organizaciones, roles, retención y proveedores certificados requiere servicios seguros y verificación del propietario.</p><span class="tag">Módulo planificado</span></div></section>
+      <footer class="footer">Digi-Firma · Proyecto privado en desarrollo <span>Sin capacidad de firma electrónica</span></footer>
+    </div>
+  </main>
+</div>
+</body>
+</html>
