@@ -95,5 +95,15 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [x] Navegación móvil, skip-link, secciones semánticas y respeto de movimiento reducido.
 - [x] Servidor de laboratorio sirve el sitio, los módulos y las rutas de panel desde lista explícita.
 - [x] Pruebas HTTP/estructura actualizadas.
-- [ ] Validar CI de esta iteración, revisar experiencia visual en navegadores y pruebas WCAG.
+- [x] CI de sitio web #40228076144: success (PR #16).
+- [ ] Revisión visual en navegadores y pruebas WCAG pendientes.
 - [ ] Despliegue público deshabilitado; publicación sujeta a revisión y autorización.
+
+## Iteración 6 — Dominio de autorización y contratos de backend
+- [x] Control de organización y jurisdicción `VE` en biblioteca de dominio con denegación por defecto.
+- [x] Política de permisos diferenciados owner/admin/member/auditor, con pruebas negativas.
+- [x] Máquina de estados de solicitudes preparatorias sintéticas, sin firma real.
+- [x] SQL propuesto con restricciones VE, claves compuestas y RLS. **No conectado ni ejecutado; no cuenta como backend de producción**.
+- [x] Documento de arquitectura y lista de pruebas de seguridad PostgreSQL.
+- [ ] Ejecutar PostgreSQL/RLS real, integrar proveedor de sesiones y storage cifrado.
+- [ ] CI de esta iteración pendiente de verificación.

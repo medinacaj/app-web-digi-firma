@@ -24,6 +24,10 @@ jobs:
           node --check assets/site.js
           node --check assets/app.js
           node --check src/project.mjs
+          node --check src/domain/authorization.mjs
+          node --check src/domain/request-workflow.mjs
+          node --check tests/domain-authorization.test.mjs
+          node --check tests/domain-workflow.test.mjs
           node --check src/local-pdf.mjs
           node --check src/identity-format.mjs
           node --check tests/identity-format.test.mjs
@@ -46,5 +50,7 @@ jobs:
           test -s assets/site.js
           test -s docs/PROGRESO.md
           test -s docs/RELEASE-GATES.md
+          test -s docs/BACKEND-PLAN.md
+          test -s db/migrations/001_base_ve.sql
           test -s SECURITY.md
           test -s .github/CODEOWNERS

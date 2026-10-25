@@ -44,3 +44,9 @@ Framework, plataforma de hosting, residencia legal de datos, base de datos, iden
 - `tests/demo-*.test.mjs`: pruebas de API y de dominio sin dependencias externas.
 
 **No reutilizar este servidor como backend productivo:** carece de autenticación, sesiones reales, persistencia, rotación de claves, integridad respaldada externamente y garantías de custodia. La validación `VE` de laboratorio no acredita jurisdicción ni identidad de actores reales.
+
+## Contratos para futuro backend (sin despliegue)
+- Política central de autorización por actor verificado, rol y organización en `src/domain/authorization.mjs`.
+- Estados seguros de solicitudes no firmadas en `src/domain/request-workflow.mjs`.
+- Migración PostgreSQL y RLS propuestas en `db/migrations/001_base_ve.sql`; no se ha ejecutado ni validado contra una base real.
+- Documentación de limitaciones y pruebas de infraestructura necesarias en `docs/BACKEND-PLAN.md`.
