@@ -1,12 +1,26 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { milestones, capabilities, projectProgress } from "../src/project.mjs";
+import { milestones, capabilities, projectProgress, jurisdiction, isSupportedJurisdiction } from "../src/project.mjs";
+
+test("jurisdicción exclusiva de Venezuela", () => {
+  assert.equal(jurisdiction.countryCode, "VE");
+  assert.equal(jurisdiction.countryName, "Venezuela");
+  assert.equal(jurisdiction.locale, "es-VE");
+  assert.equal(jurisdiction.exclusive, true);
+});
+
+test("únicamente VE es país admitido en el dominio", () => {
+  for (const code of ["VE", "ve", " VE "]) assert.equal(isSupportedJurisdiction(code), true);
+  for (const code of ["CL", "CO", "US", "ES", "", null, undefined, 58, {}, []]) {
+    assert.equal(isSupportedJurisdiction(code), false);
+  }
+});
 
 test("todos los hitos poseen identificador único", () => {
   assert.equal(new Set(milestones.map((m) => m.id)).size, milestones.length);
 });
 
-test("prototipo no declara servicios de firma activos", () => {
+test("el prototipo no declara servicios reales de firma activos", () => {
   assert.ok(Object.values(capabilities).every((value) => value === false));
 });
 

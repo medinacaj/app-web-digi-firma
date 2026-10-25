@@ -1,44 +1,34 @@
-# Registro de progreso — Digi-Firma
+# Progreso verificable — Digi-Firma Venezuela
 
-Última revisión: **2026-10-25**.
-Repositorio: `medinacaj/app-web-digi-firma` (**privado**).
-Rama de trabajo: `chore/inicio-auditoria-y-base`.
+**Fecha de revisión:** 2026-10-25.
+**Mercado confirmado:** Venezuela exclusivamente (`VE`). No se admiten otros países en el alcance del producto.
+**Repositorio:** `medinacaj/app-web-digi-firma`, privado.
+**Rama de desarrollo:** `chore/inicio-auditoria-y-base`; PR #12 (borrador).
 
-## Estado al iniciar
-- [x] Repositorio privado identificado; solo existía un README y un commit inicial.
-- [x] `main` no estaba protegida.
-- [x] Sin issues ni pull requests previos.
-- [x] Nombre comercial sin aprobar (`FirmaEnLínea` sigue siendo candidato, no marca seleccionada).
+## Confirmado por inspección
+- [x] Existe el repositorio y es privado.
+- [x] `main` existe y no está protegida en inspección.
+- [x] Primera base del proyecto: UI estática, CI y documentos. Sin backend ni firmas operativas.
+- [x] Usuario delimita el mercado y la normativa de producto a Venezuela.
 
-## Trabajo realizado
-- [x] Prototipo estático con módulos navegables (sin backend, documentos ni firmas reales).
-- [x] Documentos de producto, arquitectura, riesgos, normativa y roadmap.
-- [x] Pruebas automáticas básicas y CI GitHub Actions.
-- [x] CI finalizado correctamente en la revisión inicial: run `40222921602`, conclusión `success`, 2026-10-25. Las verificaciones comprenden sintaxis, tests unitarios de estado e inventario de archivos.
-- [x] Creado plan maestro: https://github.com/medinacaj/app-web-digi-firma/issues/1
-- [x] Registrados diez issues técnicos: #2 a #11, con aceptación documentada.
-- [x] PR de arranque en borrador: https://github.com/medinacaj/app-web-digi-firma/pull/12
-- [ ] PR revisada y fusionada en `main`.
-- [ ] Reglas de protección de `main` configuradas.
-- [ ] Arquitectura definitiva aprobada.
-- [ ] Funciones de firma operativas, seguras y verificadas.
-- [ ] Revisión manual de la experiencia en navegador y pruebas de seguridad.
+## Trabajo registrado en esta intervención
+- [x] Modelo de jurisdicción declarativa `VE` y chequeos de alcance en pruebas.
+- [x] Interfaz e información de producto adaptadas a Venezuela.
+- [x] Documentación legal venezolana y eliminación del archivo legal del país anterior.
+- [x] Roadmap, arquitectura, seguridad y pruebas actualizadas para exclusividad venezolana.
+- [ ] Verificación del CI del commit de Venezuela (marcar al revisar resultado real).
+- [ ] Revisión de navegador y seguridad e2e.
+- [ ] Aprobación/fusión de PR #12.
+- [ ] Configuración de reglas de protección para `main`.
+- [ ] Backend capaz de impedir casos fuera de Venezuela.
+- [ ] Integración operativa con PSC acreditado por SUSCERTE, si se aprueba.
+- [ ] Firma electrónica real operativa.
 
-## Problemas abiertos
-- Gobernanza GitHub y protección de propiedad intelectual: #2.
-- Validación de alcance/producto: #3.
-- Decisiones de stack y amenazas: #4.
-- Privacidad y legislación: #10.
-- Backend, PDF, solicitudes, evidencias, FEA y seguridad: #5–#9, #11.
+## Backlog
+- [Epic](https://github.com/medinacaj/app-web-digi-firma/issues/1).
+- #2 gobernanza y protección GitHub; #3 producto; #4 arquitectura.
+- #5 identidad; #6 PDFs; #7 solicitudes; #8 firma y evidencia.
+- #9 certificación con PSC venezolano; #10 privacidad y legislación; #11 pruebas y lanzamiento.
 
-## Alcance de las pruebas realizadas
-La CI comprueba la estructura y ciertas invariantes del prototipo, **no** certifica seguridad, validez jurídica, ausencia de vulnerabilidades, navegación cross-browser ni preparación para producción.
-
-## Regla de veracidad
-Cerrar issues únicamente con entregables reales, pruebas/evidencia y PR revisada. No presentar una interfaz de ejemplo como servicio de firma electrónica.
-
-## Próxima intervención
-1. Revisar y aprobar la PR #12 (sin auto-merge).
-2. Evaluar protección de `main` y accesos sin romper despliegues ni alterar privacidad sin autorización.
-3. Resolver #3 y #4 antes de integrar backend y almacenamiento.
-4. Mantener este archivo sincronizado tras cada integración.
+## Definición de verificado
+Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicción en el prototipo; **no aseguran** que un backend inexistente excluya otras jurisdicciones ni que el servicio pueda firmar legalmente. Todas las funciones productivas siguen deshabilitadas hasta que exista identidad, documentos seguros, verificación y validación legal.

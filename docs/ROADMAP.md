@@ -1,24 +1,23 @@
-# Roadmap preliminar
+# Roadmap — Digi-Firma Venezuela
 
-Los hitos son dependencias de trabajo, no fechas prometidas. El seguimiento ejecutable debe mantenerse en GitHub Issues y PRs; el resumen de estado debe reflejar únicamente verificaciones realizadas.
+**Único mercado: Venezuela.** Todas las fases requieren pruebas y evidencia. Sin fechas de lanzamiento prometidas. Issues y PR son el seguimiento operativo.
 
-| Fase | Entregable | Criterio para cerrar |
+| Etapa | Trabajo | Criterio de cierre |
 | --- | --- | --- |
-| 0 | Inspección, documentación y prototipo | PR revisada, controles de CI y backlog registrado |
-| 1 | Contratos de producto y arquitectura | Alcance, decisiones y modelo de amenazas aprobados |
-| 2 | Identidad, sesiones, organizaciones | Tests de permisos, MFA admin y aislamiento |
-| 3 | PDF y solicitudes | Custodia cifrada, límites, escaneo y flujos testeados |
-| 4 | Firma simple y evidencias | Consentimiento, identidad, hash, sello y auditoría |
-| 5 | FEA mediante prestador acreditado | Integración y validación legal/técnica verificadas |
-| 6 | Seguridad, operación y cumplimiento | Pentest, pruebas de restauración y plan de incidentes |
-| 7 | Piloto controlado | Criterios de aceptación, soporte y decisión de lanzamiento |
+| 0 | Prototipo privado, jurisdicción VE, CI y documentación | PR revisada y verificada; ninguna firma real |
+| 1 | Definir casos de uso, tipos documentales venezolanos y arquitectura | Alcance y amenazas aprobados; decisiones ADR |
+| 2 | Identidad (cédula/RIF), organizaciones y acceso seguro | Verificación real definida, MFA y pruebas de aislamiento |
+| 3 | PDF privado, versiones y solicitudes | Cifrado, validación, autorización y flujos verificables |
+| 4 | Firma electrónica conforme al Decreto-Ley 1.204 | Evidencia, autoría, integridad y revisión legal por tipo de acto |
+| 5 | Integración con PSC acreditado ante SUSCERTE cuando corresponda | Acreditación vigente y validación del certificado/cadena |
+| 6 | Seguridad, derechos de privacidad y operación | Pentest, restauración, incident response y evaluación legal |
+| 7 | Piloto venezolano controlado | Aprobación comercial, jurídica y técnica antes de operar |
 
-## Forma de trabajo
-1. Cada capacidad tiene un issue con aceptación explícita.
-2. Los cambios se realizan en ramas, PR y CI; evitar pushes directos a main.
-3. Un issue solo se cierra con evidencia revisada y documentación al día.
-4. No se publica un despliegue hasta completar privacidad, identidad y autorizaciones.
-5. Todo desarrollo posterior actualiza docs/PROGRESO.md, incorporando fecha, commit y resultados.
+## Seguimiento
+- [Epic #1](https://github.com/medinacaj/app-web-digi-firma/issues/1)
+- Producto, arquitectura y cumplimiento: #3, #4 y #10.
+- Firma y certificación venezolana: #8 y #9.
+- No completar una tarea porque exista una pantalla o documento: exigir pruebas y revisión.
 
-## Prioridad inmediata
-Cerrar auditoría/configuración GitHub, confirmar alcance, seleccionar arquitectura definitiva y definir threat model; después implementar auth y storage. La UI no sustituye estos controles.
+## Próximos pasos
+Revisar PR #12 y configuración privada/protección de ramas; después cerrar decisiones de producto, identidad y arquitectura. No desplegar públicamente en fase 0.

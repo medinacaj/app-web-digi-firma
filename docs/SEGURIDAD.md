@@ -1,39 +1,36 @@
-# Auditoría inicial y plan de seguridad (2026-10-25)
+# Seguridad y privacidad — Digi-Firma Venezuela
 
-## Inspección del repositorio
-- GitHub: \`medinacaj/app-web-digi-firma\`.
-- Visibilidad comprobada: \`private\`. No cambiar sin autorización.
-- Rama principal: \`main\`; estado de \`protected\` observado: \`false\`.
-- Antes del inicio técnico: solo README, un commit, sin issues ni PR.
-- No se pudo realizar pentest ni análisis de dependencias reales, porque no existía aplicación.
-- La rama de inicio añade prototipo sin dependencias de terceros, CI y controles documentales.
-- La visibilidad privada no impide por sí sola acceso de colaboradores, integraciones autorizadas, GitHub o procesos de CI. Auditar permisos fuera del alcance de estas lecturas.
+Fecha de inspección de base: 2026-10-25.
 
-## Registro de riesgos inicial
-| Riesgo | Severidad | Tratamiento |
+## Estado verificado
+- Repositorio `medinacaj/app-web-digi-firma`, visibilidad **private**.
+- Rama `main` sin protección observada en inspección inicial.
+- Prototipo de fase 0 sin dependencias externas ni operaciones reales de firma.
+- CI cubre sintaxis y tests limitados. Sin pentest, verificación de identidad, secreto de firma, certificado, PDF ni auditoría operativa.
+- El acceso exclusivo del titular a todos los servicios, aplicaciones autorizadas y tratamientos de datos **no está certificado** por tener repo privado: necesita auditoría de permisos y condiciones de GitHub.
+
+## Amenazas y mitigaciones pendientes
+| Riesgo | Criticidad | Control requerido |
 | --- | --- | --- |
-| Rama principal sin protección | Alta | Configurar reglas de protección/revisión y requerir CI; no alterar ajustes sin evaluar impacto |
-| Uso de firma dibujada como FEA | Crítica | No habilitarla como FEA; integrar PSC acreditado y revisión legal |
-| IDOR entre organizaciones/documentos | Crítica | Autorización backend por recurso, pruebas negativas y tenant isolation |
-| Filtración de PDFs/datos personales | Crítica | Storage privado, cifrado, políticas y acceso mínimo |
-| Falsificación o alteración de evidencia | Crítica | Hashes, evento verificable, sellos, custodia e idempotencia |
-| Tokens de invitación filtrados o reenviados | Alta | TTL, revocación, scope, rate limiting y verificación de identidad |
-| CI/CD y secretos de terceros | Alta | Permisos mínimos, revisión de dependencias y secretos aislados |
-| Eliminación y retención inadecuadas | Alta | Ciclo de vida por finalidad, procedimientos y auditoría |
-| Falta de autenticación real | Bloqueante | No procesar documentos ni permitir operaciones hasta disponer de auth |
+| Firma atribuida erróneamente | Crítica | Evidencia de identidad, signatario, autorización y vínculo al documento |
+| Firma presentada como certificada sin respaldo | Crítica | Comprobación del PSC acreditado, certificación, cadena y revocación |
+| Exposición de cédula, RIF, domicilio o PDFs | Crítica | Minimización, cifrado, acceso mínimo, secretos aislados y retención |
+| Alta de organizaciones fuera de VE | Alta | Validación server-side de jurisdicción/actividad, auditoría y pruebas |
+| IDOR entre organizaciones/documentos | Crítica | Control por recurso, aislamiento multi-tenant y pruebas negativas |
+| Documentos alterados después del acto | Crítica | Hash sobre la versión exacta, firma verificable y evidencias resistentes a alteración |
+| Invitaciones reenviadas o robadas | Alta | Expiración, scopes, revocación, antifraude, límites y autenticación |
+| Código o secretos expuestos | Alta | Repo privado, CI mínimo, revisión, secret scanning y permisos auditados |
+| Rama principal sin reglas de protección | Alta | Reglas de PR+CI y aprobación antes de fusionar |
+| Retención excesiva de datos | Alta | Política por finalidad, borrado/control de acceso, revisión jurídica |
 
-## Controles mínimos antes de producción
-- Modelado de amenazas y revisión de seguridad para toda ruta de documento/firma.
-- Autenticación robusta, MFA para administradores, CSRF donde aplique, control de sesiones y rate limiting.
-- SAST, análisis de dependencias, secret scanning, revisión de permisos del repo y CI con permisos mínimos.
-- Control estricto MIME, tamaño, antivirus y aislamiento al procesar PDF; defensa frente a SSRF y parser exploits.
-- Cifrado en tránsito/en reposo, claves administradas con rotación y principio de menor privilegio.
-- Backups restaurables y pruebas de respuesta a incidentes.
-- Auditoría de acceso y consentimiento, integridad verificable y políticas de retención.
-- DPIA/análisis de impacto de privacidad cuando corresponda y revisión legal local.
+## Prácticas obligatorias antes de operación
+- Modelo de amenazas, control de acceso por documento, tests de acceso y rate limiting.
+- Validación segura de PDF (tamaño, MIME real, antivirus, parsers aislados).
+- Cifrado en tránsito y reposo, llaves segregadas y acceso mínimo.
+- Políticas de conservación, privacidad y derechos de las personas según legislación venezolana aplicable.
+- Auditoría resistente a alteraciones, sellos temporales verificados, revocación y pruebas de recuperación.
+- Revisión de requisitos específicos de la Ley de Infogobierno **solo para casos dentro de su ámbito**.
+- Revisión legal independiente antes de afirmar efectos jurídicos de cada flujo documental.
 
-## Privacidad intelectual
-- Mantener repositorio privado; no activar Pages ni publicar artefactos o datos de producción.
-- No introducir credenciales en prompts, código, archivos de ejemplo o comentarios de issues.
-- Una PR o Action es actividad alojada en GitHub y su acceso se rige por configuración y permisos de la cuenta.
-- No se ha certificado exclusividad absoluta ni restricciones contractuales de entrenamiento/retención por terceros; deben auditarse los términos y ajustes del servicio.
+## Protección del repositorio
+Mantener el código privado. No activar GitHub Pages, dominios, CI de despliegue público ni herramientas externas con acceso al código sin autorización y análisis previo. No incluir datos personales reales ni credenciales en pruebas, incidencias o logs.

@@ -1,34 +1,38 @@
-# Arquitectura y decisiones de inicio
+# Arquitectura de Digi-Firma Venezuela
 
-## Etapa 0 (implementada en la rama de trabajo)
-Sitio estático HTML/CSS/JavaScript sin dependencias, sin conexiones externas y sin servicios backend. Objetivo: visualización del diseño, navegación y marco de trabajo. **No maneja documentos ni identidad**.
+## Fase 0 — estado implementado
+Sitio estático HTML, CSS y JavaScript. Sin backend, almacenamiento, autenticación ni proveedor de certificación. La configuración declarativa `countryCode: "VE"` **NO impone límites en un servicio real** porque ese servicio todavía no existe.
 
-Este código NO pretende ser la arquitectura final de producción. El propósito es crear una base revisable sin escoger prematuramente proveedor de identidad, base de datos o custodia.
+## Restricción de mercado
+- **País único:** Venezuela (código ISO 3166-1 alpha-2 `VE`).
+- Interfaz de referencia `es-VE`; no selector de países.
+- Reglas comerciales y jurídicas: únicamente documentos y transacciones admitidos para uso en Venezuela.
+- En producción: enforcement en API, tenant, organizaciones, flujos y proveedores; nunca solo en frontend o geolocalización.
+- Rechazar explícitamente solicitudes fuera de alcance, sin exponer datos internos. Registrar decisiones sin almacenar documentación personal innecesaria.
+- Firmantes fuera del territorio: no asumir elegibilidad automática; determinar cómo se comprueba jurisdicción del acto caso por caso.
 
-## Arquitectura objetivo (propuesta)
-1. Frontend accesible y adaptable, con navegación autenticada.
-2. Backend API validando sesiones, roles, organizaciones y autorización por documento.
-3. Base de datos transaccional con políticas de aislamiento multi-tenant.
-4. Almacenamiento privado de objetos con cifrado, antivirus, límites, URL temporales y política de retención.
-5. Orquestador de solicitudes/firmantes; máquina de estados con idempotencia y concurrencia.
-6. Servicio de evidencia que asocia hash del PDF exacto, identidad, consentimiento, eventos y sellos temporales.
-7. Integración separada con prestador acreditado para firma avanzada; credenciales y certificados fuera del cliente.
-8. Cola de tareas, correo transaccional, observabilidad, monitoreo de seguridad y backups probados.
+## Arquitectura objetivo (propuesta; no aprobada)
+1. Frontend web responsivo, accesible, localización `es-VE` y servicios autenticados.
+2. API backend con autorización por usuario, organización, documento y caso de uso; política de mercado VE.
+3. Persistencia relacional con aislamiento multi-tenant y auditoría.
+4. Almacenamiento de PDFs privado, cifrado, scanner antimalware, control de tamaño, retención y recuperación.
+5. Motor de estados de solicitudes, invitaciones temporales y verificación de identidad proporcional a riesgos.
+6. Motor de integridad y evidencias: hash exacto del documento, atribución del signatario, consentimiento, tiempos, idempotencia y cadena de custodia.
+7. Adaptador para PSC acreditado ante SUSCERTE, si el producto requiere certificados: validar vigencia y cadena de confianza, firma de webhooks, revocaciones y responsabilidades contractuales.
+8. Colas, observabilidad sin datos sensibles, seguridad, cifrado y respaldos verificados.
 
-## Modelo lógico preliminar
-\`organizations\`, \`users\`, \`memberships\`, \`documents\`, \`document_versions\`, \`signature_requests\`, \`recipients\`, \`signature_events\`, \`evidence_artifacts\`, \`audit_events\`, \`retention_policies\`.
+## Modelo inicial (pendiente de aprobación)
+`organizations`, `users`, `memberships`, `identity_evidence`, `documents`, `document_versions`, `signature_requests`, `recipients`, `signature_events`, `certificate_refs`, `evidence_artifacts`, `audit_events`, `retention_policies`.
 
-## Reglas arquitectónicas
-- Nunca confiar en un identificador enviado por el cliente sin verificar acceso y pertenencia.
-- El documento firmado debe ser inmutable y verificable contra su hash.
-- Enlaces de firma de un solo alcance, temporalidad y anti-reutilización.
-- Webhooks de proveedores con firma, control anti-replay y procesamiento idempotente.
-- Ninguna clave de firma privada ni credencial de proveedor debe exponerse en navegador ni repositorio.
-- Separar UI pública, API privada y verificadores de acceso acotado.
-- Datos cifrados, logs redactados y auditoría protegida contra modificaciones.
+Todo documento y solicitud deberá estar asociado a `jurisdiction_country = "VE"`; la restricción real será validada en backend y base de datos, con pruebas negativas.
 
-## Integración con otras aplicaciones
-Una eventual integración con otros productos del titular debe realizarse por contratos API/versiones, autenticación y scopes explícitos; no copiar bases de datos ni dar acceso transversal por defecto.
+## Principios
+- En el cliente no se custodian claves privadas, tokens de prestadores ni certificados con material secreto.
+- No confiar en RIF, cédula, encabezados, IP ni parámetros remitidos por navegador como prueba de identidad o jurisdicción.
+- Denegar acceso cruzado entre organizaciones; auditar cada acción.
+- Versiones de documento inmutables y huellas verificables.
+- Webhooks firmados, protección contra replay y reintentos idempotentes.
+- La integración con otras apps del titular solo por API autenticada, permisos mínimos y contratos separados.
 
-## Decisiones pendientes
-Framework/backend, SSO/identidad, hosting, base de datos, storage, cifrado, correo y PSC/FEA. Registrar cada decisión en issues/ADR antes de producción.
+## Decisiones todavía no aprobadas
+Framework, plataforma de hosting, residencia legal de datos, base de datos, identidad y verificación, almacenamiento, proveedor PSC, integraciones y modelo de cobro. Abrir ADRs y validar con pruebas antes de producción.

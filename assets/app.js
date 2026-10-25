@@ -1,11 +1,15 @@
-import { milestones, projectProgress } from "../src/project.mjs";
+import { milestones, projectProgress, jurisdiction } from "../src/project.mjs";
+
+if (jurisdiction.countryCode !== "VE" || jurisdiction.exclusive !== true) {
+  throw new Error("Digi-Firma: configuración de jurisdicción inválida");
+}
 
 const views = Object.freeze({
-  resumen: ["Resumen", "Resumen general", "La base inicial para una experiencia de firma digital segura y trazable."],
-  documentos: ["Documentos", "Documentos", "Custodia y acceso seguro: funcionalidad aún no implementada."],
-  solicitudes: ["Solicitudes", "Solicitudes de firma", "El flujo de firmantes y consentimiento se encuentra planificado."],
-  auditoria: ["Auditoría", "Registro de auditoría", "Integridad y trazabilidad verificable: módulo pendiente."],
-  configuracion: ["Configuración", "Configuración", "Organizaciones, roles y controles todavía no disponibles."]
+  resumen: ["Resumen", "Resumen general", "La base inicial para una plataforma de firma electrónica destinada únicamente a Venezuela."],
+  documentos: ["Documentos", "Documentos", "Custodia privada de documentos para el mercado venezolano: funcionalidad aún no implementada."],
+  solicitudes: ["Solicitudes", "Solicitudes de firma", "El flujo de firmantes y consentimiento para Venezuela está planificado, no operativo."],
+  auditoria: ["Auditoría", "Registro de auditoría", "Integridad y trazabilidad conforme al alcance venezolano: módulo pendiente."],
+  configuracion: ["Configuración", "Configuración", "Organizaciones venezolanas, roles y controles todavía no disponibles."]
 });
 
 function navigate(nextView) {
