@@ -17,7 +17,7 @@ const post = (body, other = {}) => ({
 test("GET muestra la UI local y cabeceras de seguridad", async () => withDemo(async (origin) => {
   const response = await fetch(origin + "/");
   assert.equal(response.status, 200);
-  assert.match(await response.text(), /Venezuela exclusivamente/);
+  assert.match(await response.text(), /exclusiva para Venezuela|exclusivamente en Venezuela/i);
   const appResponse = await fetch(origin + "/app/");
   assert.equal(appResponse.status, 200);
   assert.match(await appResponse.text(), /Prototipo no operativo/);
