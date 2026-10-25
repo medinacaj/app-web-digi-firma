@@ -47,3 +47,6 @@ Plataforma web de gestión del ciclo de firma electrónica para particulares, pr
 - Procesos de certificación se separan de funciones del producto y se sustentan en PSC acreditado.
 - Política de privacidad, mapa de datos, retención, respuesta a incidentes y revisión jurídica completadas.
 - Acciones de firma en UI siguen bloqueadas hasta que todos los controles relevantes estén listos.
+
+## Validador ilustrativo, no de identidad
+La comprobación de formato local no es una verificación de identidad ni de RIF ante SENIAT. Los prefijos y longitudes admitidos en el prototipo se usan solamente como ayuda UX; no son criterio de rechazo legal definitivo. La aprobación del registro requerirá verificación real, representación cuando aplique y tratamiento de datos con base jurídica.

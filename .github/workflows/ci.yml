@@ -24,6 +24,8 @@ jobs:
           node --check assets/app.js
           node --check src/project.mjs
           node --check src/local-pdf.mjs
+          node --check src/identity-format.mjs
+          node --check tests/identity-format.test.mjs
           node --check tests/local-pdf.test.mjs
           node --check tests/dev-guard.test.mjs
           node --check tests/project.test.mjs

@@ -52,7 +52,7 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [x] Comparación opcional con huella proporcionada por el usuario.
 - [x] Control de tamaño (20 MiB), cabecera `%PDF-` y resultados que aclaran que no son firmas.
 - [x] Pruebas unitarias de contenido y comparación.
-- [ ] Verificar CI del commit de esta iteración.
+- [x] Iteración de huella PDF verificada: GitHub Actions #40225892185, resultado success.
 - [ ] Validación de formato PDF completo, firmas X.509, revocación y prestadores certificados: pendientes (fuera de la herramienta local).
 
 ## Tercera iteración — Gobernanza y puertas de salida
@@ -60,6 +60,19 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [x] CODEOWNERS asignado al dueño del repositorio; requiere protección de rama para exigir aprobación.
 - [x] Condiciones de liberación y lista de bloqueo productivo documentadas.
 - [x] Tests de arranque: laboratorio requiere opt-in y no opera con NODE_ENV=production.
-- [ ] Confirmar ejecución CI de esta iteración.
+- [x] Iteración de gobernanza verificada: GitHub Actions #40226032035, resultado success.
 - [ ] Activar protección real de rama `main` (no disponible en las herramientas de cambios conectadas).
 - [ ] Revisión manual y auditoría independiente antes de despliegue.
+
+## Integración de la base
+- [x] PR #12 fusionada en `main` mediante squash: `2da5318f1931dc665f8d4704d6bba305414bfd0a`.
+- [x] Verificada la visibilidad **private** después de la integración; no se activó un despliegue.
+- [ ] No hay protección de `main` activa; issue #2 continúa.
+- [ ] Falta identidad/persistencia/PSC y otros gates de producción.
+
+## Iteración 4 — Formatos de identificación VE
+- [x] Funciones de normalización/estructura de cédula y RIF, sin consulta de registro ni dígito verificador.
+- [x] Interfaz demostrativa local y borrado inmediato del campo tras comprobarlo.
+- [x] Pruebas unitarias de entradas válidas e inválidas.
+- [x] GitHub Actions #40226355180 completado correctamente; PR #14 documenta cambios de formato local.
+- [ ] Verificación oficial SAIME/SENIAT, autenticación y atribución de identidad siguen pendientes.

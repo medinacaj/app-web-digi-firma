@@ -1,5 +1,6 @@
 import { milestones, projectProgress, jurisdiction } from "../src/project.mjs";
 import { sha256LocalPdf, compareSha256, LocalPdfError, PDF_MAX_BYTES } from "../src/local-pdf.mjs";
+import { examineVenezuelanIdentifier } from "../src/identity-format.mjs";
 
 if (jurisdiction.countryCode !== "VE" || jurisdiction.exclusive !== true) {
   throw new Error("Digi-Firma: configuración de jurisdicción inválida");
@@ -213,4 +214,14 @@ hashCompare.addEventListener("click", () => {
   } catch (error) {
     compareStatus.textContent = error instanceof LocalPdfError ? error.message : "Error de comparación.";
   }
+});
+
+// Formato ilustrativo local: no se comunica con ninguna entidad ni servicio.
+document.getElementById("identity-check").addEventListener("click", () => {
+  const field = document.getElementById("identity-value");
+  const status = document.getElementById("identity-status");
+  const type = document.getElementById("identity-type").value;
+  const result = examineVenezuelanIdentifier(type, field.value);
+  field.value = ""; // Eliminar el dato inmediatamente después de la revisión
+  status.textContent = result.message + " Ningún identificador se envió ni guardó.";
 });

@@ -92,3 +92,7 @@ La función opera en un contexto seguro (`http://127.0.0.1:8787` o HTTPS) y es i
 - [Puertas antes de habilitar producción](docs/RELEASE-GATES.md)
 - CODEOWNERS: `@medinacaj` (la revisión obligatoria requiere además configurar reglas de rama en GitHub).
 - El entorno de demostración tiene bloqueo de arranque en producción y no debe estar accesible en Internet.
+
+## Comprobación ilustrativa de formatos venezolanos
+
+La sección Configuración contiene un validador **local de estructura**, sin almacenar cédulas o RIF. Cédula: ejemplo V/E + 6–8 dígitos; RIF: letra + 9 dígitos. Su conjunto de prefijos conocidos es preliminar y no excluye otros oficialmente registrados. No se valida dígito de control ni se consulta SAIME/SENIAT; **no se acredita identidad, registro, domicilio, capacidad ni representación**. Para producción se requiere verificación mediante fuente autorizada y confirmación legal. Ver `src/identity-format.mjs`.
