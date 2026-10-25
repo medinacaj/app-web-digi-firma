@@ -53,6 +53,7 @@ jobs:
           test -s docs/PROGRESO.md
           test -s docs/RELEASE-GATES.md
           test -s docs/BACKEND-PLAN.md
+          test -s tests/browser-smoke.sh
           test -s db/migrations/001_base_ve.sql
           test -s SECURITY.md
           test -s .github/CODEOWNERS
@@ -89,3 +90,15 @@ jobs:
         run: psql -v ON_ERROR_STOP=1 -f db/migrations/001_base_ve.sql
       - name: Validar RLS y separación de organizaciones
         run: psql -v ON_ERROR_STOP=1 -f tests/sql/rls.sql
+
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Probar sitio y panel con Chrome headless
+        run: bash tests/browser-smoke.sh

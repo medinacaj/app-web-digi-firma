@@ -123,3 +123,10 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [x] Pruebas contra identidad y repositorio sintéticos.
 - [ ] Verificar CI para integrar este commit.
 - [ ] Elegir proveedor OIDC, conectar PostgreSQL persistente, tokens verificados y API real.
+
+## Iteración 8 — Verificación de navegador
+- [x] Script de smoke test headless para la landing `/` y el panel `/app/`, usando servidor de laboratorio local.
+- [x] Comprobación de texto real en DOM, carga del laboratorio, cabecera de desarrollo `noindex`, rutas de API y whitelist del servidor.
+- [x] Job `browser` de GitHub Actions, separado de las pruebas unitarias/PostgreSQL.
+- [ ] Confirmar resultado del job browser en CI y corregir si falla.
+- [ ] Auditoría visual manual (diseño, responsive, contraste WCAG) y pruebas con otros navegadores continúan pendientes.
