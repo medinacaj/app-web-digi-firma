@@ -25,3 +25,8 @@ PostgreSQL 14+ con migraciones versionadas, usuarios de migración y runtime sep
 7. Pruebas de seguridad, pentest, resiliencia, jurídico y autorización de despliegue.
 
 La aplicación **continúa sin implementar firmas electrónicas reales**. No ampliar `signature_requests.status` a `signed` hasta aprobar el motor.
+
+## Prueba de base de datos en CI
+La migración propuesta se ejecuta ahora automáticamente en un PostgreSQL 16 **efímero de GitHub Actions**, con las comprobaciones de `tests/sql/rls.sql`: membresía, lectura de documentos por rol, denegación entre organizaciones, país diferente de VE y denegación sin contexto.
+
+Esto **no conecta** el producto a una base persistente, no prueba todas las políticas y no autoriza producción. Requiere mantener el usuario runtime distinto del usuario migrador, definir GRANT/REVOKE de despliegue, tests de concurrencia y revisión de seguridad externa.

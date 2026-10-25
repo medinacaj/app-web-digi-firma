@@ -105,5 +105,11 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [x] Máquina de estados de solicitudes preparatorias sintéticas, sin firma real.
 - [x] SQL propuesto con restricciones VE, claves compuestas y RLS. **No conectado ni ejecutado; no cuenta como backend de producción**.
 - [x] Documento de arquitectura y lista de pruebas de seguridad PostgreSQL.
-- [ ] Ejecutar PostgreSQL/RLS real, integrar proveedor de sesiones y storage cifrado.
+- [ ] Integrar proveedor de sesiones y almacenamiento cifrado productivo. La migración se prueba en PostgreSQL efímero CI, no en infraestructura real.
 - [ ] CI de esta iteración pendiente de verificación.
+
+## Iteración 6.1 — Validación SQL efímera
+- [x] Añadido servicio PostgreSQL 16 de CI para ejecutar la migración SQL.
+- [x] Casos de prueba de aislamiento multitenant y denegación fuera de VE.
+- [ ] Confirmar resultado de CI y reparar incompatibilidades PostgreSQL, si aparecen.
+- [ ] Auditar policies RLS y permisos de la identidad de runtime antes del primer despliegue.

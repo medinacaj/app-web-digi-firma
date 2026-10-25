@@ -54,3 +54,36 @@ jobs:
           test -s db/migrations/001_base_ve.sql
           test -s SECURITY.md
           test -s .github/CODEOWNERS
+
+  database:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_DB: digifirma_ci
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: ci-only-not-production
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres -d digifirma_ci"
+          --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      PGHOST: 127.0.0.1
+      PGPORT: "5432"
+      PGDATABASE: digifirma_ci
+      PGUSER: postgres
+      PGPASSWORD: ci-only-not-production
+    steps:
+      - uses: actions/checkout@v4
+      - name: PostgreSQL client
+        run: |
+          if ! command -v psql >/dev/null 2>&1; then
+            sudo apt-get update -qq
+            sudo apt-get install -y postgresql-client
+          fi
+      - name: Ejecutar migración propuesta en CI
+        run: psql -v ON_ERROR_STOP=1 -f db/migrations/001_base_ve.sql
+      - name: Validar RLS y separación de organizaciones
+        run: psql -v ON_ERROR_STOP=1 -f tests/sql/rls.sql

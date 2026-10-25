@@ -170,11 +170,11 @@ CREATE POLICY request_update ON digi.signature_requests FOR UPDATE
 CREATE POLICY versions_read ON digi.document_versions FOR SELECT
   USING (organization_id = digi.organization_id() AND EXISTS (
     SELECT 1 FROM digi.documents d WHERE d.id = document_id
-     AND d.organization_id = organization_id));
+     AND d.organization_id = digi.document_versions.organization_id));
 CREATE POLICY participants_read ON digi.request_participants FOR SELECT
   USING (organization_id = digi.organization_id() AND EXISTS (
     SELECT 1 FROM digi.signature_requests r WHERE r.id=request_id
-      AND r.organization_id = organization_id));
+      AND r.organization_id = digi.request_participants.organization_id));
 CREATE POLICY audit_read ON digi.audit_events FOR SELECT
   USING (organization_id = digi.organization_id()
     AND (digi.actor_privileged(organization_id) OR EXISTS (
