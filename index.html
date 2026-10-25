@@ -105,7 +105,23 @@
           <ol id="demo-events" class="demo-items"><li>Sin eventos simulados.</li></ol>
         </article>
       </section>
-      <section class="view" id="view-configuracion" aria-label="Configuración" hidden><div class="empty-state"><div class="empty-symbol">⚙</div><h2>Configuración protegida</h2><p>La gestión de organizaciones venezolanas, cédula o RIF, roles, retención y posibles proveedores acreditados por SUSCERTE requiere servicios seguros y verificación del propietario.</p><span class="tag">Módulo planificado</span></div></section>
+      <section class="view" id="view-configuracion" aria-label="Configuración" hidden>
+        <article class="panel demo-panel">
+          <div class="panel-head"><div><span class="section-kicker">FORMATO LOCAL · NO VERIFICACIÓN</span><h2>Identificación venezolana</h2></div><span class="tag">Sin enviar datos</span></div>
+          <p class="panel-description">Revisa únicamente la estructura básica de una cédula o RIF. No consulta SAIME ni SENIAT, no comprueba la existencia del documento, su dígito verificador, ni la identidad o representación legal. Puedes utilizar ejemplos ficticios; no ingreses datos personales reales en este entorno de pruebas.</p>
+          <div class="demo-form identity-form">
+            <label for="identity-type">Tipo</label>
+            <select id="identity-type"><option value="cedula">Cédula de identidad</option><option value="rif">RIF</option></select>
+            <label for="identity-value">Ejemplo de formato</label>
+            <input id="identity-value" type="text" maxlength="20" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="V-1234567">
+            <button type="button" id="identity-check">Revisar formato</button>
+          </div>
+          <p id="identity-status" class="demo-feedback" role="status" aria-live="polite">La información se procesa en el navegador y no se guarda.</p>
+          <div class="divider-soft"></div>
+          <div class="panel-head"><h2>Administración de organizaciones</h2><span class="tag">Pendiente</span></div>
+          <p class="panel-description">Registro, inicio de sesión, verificación de identidad, facultades de representación, roles y permisos requieren backend y revisión jurídica antes de habilitarse.</p>
+        </article>
+      </section>
       <footer class="footer">Digi-Firma Venezuela · Proyecto privado en desarrollo <span>Jurisdicción VE · Sin firma electrónica operativa</span></footer>
     </div>
   </main>
