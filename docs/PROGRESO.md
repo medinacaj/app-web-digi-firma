@@ -3,7 +3,7 @@
 **Fecha de revisión:** 2026-10-25.
 **Mercado confirmado:** Venezuela exclusivamente (`VE`). No se admiten otros países en el alcance del producto.
 **Repositorio:** `medinacaj/app-web-digi-firma`, privado.
-**Rama de desarrollo:** `chore/inicio-auditoria-y-base`; PR #12 (borrador).
+**Rama principal:** `main`, cambios de PR #12 y #14 fusionados.
 
 ## Confirmado por inspección
 - [x] Existe el repositorio y es privado.
@@ -18,7 +18,7 @@
 - [x] Roadmap, arquitectura, seguridad y pruebas actualizadas para exclusividad venezolana.
 - [x] GitHub Actions verificado tras adaptación a VE: run 40224843820, conclusión success, commit 54583a2 (9/9 tests pasados).
 - [ ] Revisión de navegador y seguridad e2e.
-- [ ] Aprobación/fusión de PR #12.
+- [x] PR #12 fusionada en `main` (commit `2da5318`).
 - [ ] Configuración de reglas de protección para `main`.
 - [ ] Backend capaz de impedir casos fuera de Venezuela.
 - [ ] Integración operativa con PSC acreditado por SUSCERTE, si se aprueba.
@@ -76,3 +76,14 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [x] Pruebas unitarias de entradas válidas e inválidas.
 - [x] GitHub Actions #40226355180 completado correctamente; PR #14 documenta cambios de formato local.
 - [ ] Verificación oficial SAIME/SENIAT, autenticación y atribución de identidad siguen pendientes.
+
+## Resumen consolidado después de PR #14
+- [x] PR #12 fusionada: base web, demostración local, hash PDF en navegador y CI.
+- [x] PR #14 fusionada: utilidad de formatos de cédula/RIF sin almacenar ni verificar identidades.
+- [x] CI #40226399775 (último cambio de PR #14), conclusión success.
+- [x] Repositorio confirmado como **private**.
+- [ ] La rama `main` sigue sin protección real (issue #2).
+- [ ] No se ha activado despliegue público.
+- [ ] Faltan autenticación, custodia cifrada, firma, certificación, integración PSC, auditoría independiente y validación legal (#5–#10 y #13).
+
+**Estado honesto:** la base web está en `main`, pero Digi-Firma NO es un servicio de firma electrónica operativo. Los `release gates` continúan bloqueantes.
