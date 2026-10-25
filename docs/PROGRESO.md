@@ -54,3 +54,12 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [x] Pruebas unitarias de contenido y comparación.
 - [ ] Verificar CI del commit de esta iteración.
 - [ ] Validación de formato PDF completo, firmas X.509, revocación y prestadores certificados: pendientes (fuera de la herramienta local).
+
+## Tercera iteración — Gobernanza y puertas de salida
+- [x] Política de seguridad y denuncia responsable por canal privado.
+- [x] CODEOWNERS asignado al dueño del repositorio; requiere protección de rama para exigir aprobación.
+- [x] Condiciones de liberación y lista de bloqueo productivo documentadas.
+- [x] Tests de arranque: laboratorio requiere opt-in y no opera con NODE_ENV=production.
+- [ ] Confirmar ejecución CI de esta iteración.
+- [ ] Activar protección real de rama `main` (no disponible en las herramientas de cambios conectadas).
+- [ ] Revisión manual y auditoría independiente antes de despliegue.

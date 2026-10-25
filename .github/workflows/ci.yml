@@ -25,6 +25,7 @@ jobs:
           node --check src/project.mjs
           node --check src/local-pdf.mjs
           node --check tests/local-pdf.test.mjs
+          node --check tests/dev-guard.test.mjs
           node --check tests/project.test.mjs
           node --check server/demo-store.mjs
           node --check server/demo-http.mjs
@@ -38,3 +39,6 @@ jobs:
           test -s README.md
           test -s index.html
           test -s docs/PROGRESO.md
+          test -s docs/RELEASE-GATES.md
+          test -s SECURITY.md
+          test -s .github/CODEOWNERS
