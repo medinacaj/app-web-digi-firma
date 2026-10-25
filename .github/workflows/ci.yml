@@ -36,6 +36,8 @@ jobs:
           node --check tests/project.test.mjs
           node --check server/demo-store.mjs
           node --check server/demo-http.mjs
+          node --check server/api-contract.mjs
+          node --check tests/api-contract.test.mjs
           node --check server/dev.mjs
           node --check tests/demo-store.test.mjs
           node --check tests/demo-http.test.mjs

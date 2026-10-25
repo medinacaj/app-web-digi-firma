@@ -113,3 +113,13 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 - [x] Casos de prueba de aislamiento multitenant y denegación fuera de VE.
 - [x] GitHub Actions #40228703172: jobs `checks` y `database` aprobados; migración SQL y pruebas RLS en PostgreSQL 16.
 - [ ] Auditar policies RLS y permisos de la identidad de runtime antes del primer despliegue.
+
+## Iteración 7 — Contrato HTTP backend sin exposición
+- [x] Controlador API inyectable y sin capacidad de escuchar red por sí mismo.
+- [x] Endpoint de capacidades que declara firmas, almacenamiento y certificación deshabilitados.
+- [x] Listado de metadatos con defensa en profundidad sobre recursos ajenos.
+- [x] Alta de borrador sintético con alcance VE, autorización y whitelist de campos.
+- [x] Bloqueo explícito de rutas de firma y errores sin datos privados.
+- [x] Pruebas contra identidad y repositorio sintéticos.
+- [ ] Verificar CI para integrar este commit.
+- [ ] Elegir proveedor OIDC, conectar PostgreSQL persistente, tokens verificados y API real.
