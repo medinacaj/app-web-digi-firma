@@ -8,8 +8,10 @@ Scope approved by user: publish panel and adapt drafts to a browser simulation; 
 - [x] Add failing tests for synthetic templates, country validation, limits, cancellation, independent state, snapshots and event integrity; implement serialized asynchronous browser store.
 - [x] Update export contract tests to require the panel/modules; wire explicit browser mode while preserving local HTTP demo. Make landing entry point say “Probar el panel”.
 - [x] Run full Node suite and build. Exercise published-folder routing at a project subpath in Chromium: navigation, create/cancel/events, reload reset, PDF hash/comparison, invalid PDF, identifier format and mobile menu. Assert no API requests or console errors.
-- [ ] Review changes, preserve source branch for review, deploy only built artifacts to gh-pages, verify live routes and interactions.
+- [x] Review changes, preserve source branch for review, deploy only built artifacts to gh-pages, verify live routes and interactions.
 
 Review focus: double clicks/concurrent mutations; untrusted template keys; state copies; subpath module URLs; private artifacts excluded. Failure paths must preserve store state. No real personal data in tests.
 
 Verification: 44/44 Node tests; Chromium workflow passed at a project subpath, no API requests or JavaScript errors. Independent review found no blocking issues. The reviewer noted the disabled top-level request button; the exported panel now offers “Borrador de prueba” navigation and an export regression plus browser test covers it.
+
+Deployment: gh-pages commit 2545bb1, Pages built. All 13 live artifacts fetched with verified HTTPS match the locally browser-tested package byte for byte. PR #23 holds the source changes; CI browser/checks/database/public-package passed. Live Chromium navigation encountered an environment CA trust error; no certificate verification was disabled. Functional Chromium validation was performed on the identical local package.

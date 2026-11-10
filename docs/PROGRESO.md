@@ -153,3 +153,5 @@ Ver `docs/PUBLICACION-COMERCIAL.md`.
 - Modo explícito del build; sin llamadas a API, envío de PDFs, cuentas ni persistencia.
 - 44 pruebas Node aprobadas y comprobación Chromium del paquete a subruta de proyecto: navegación, crear/cancelar, eventos, PDF, comparación/rechazo, formato, recarga y móvil.
 - Backend comercial, autenticación y firmas reales continúan pendientes.
+
+- Publicación verificada: https://medinacaj.github.io/app-web-digi-firma/app/; los 13 archivos públicos coinciden con el paquete probado. Código fuente en PR #23, con CI aprobado.
