@@ -27,3 +27,32 @@
 .identity-form input[type=text]{flex:1;min-width:160px;padding:10px 12px;border:1px solid #dbe2ed;border-radius:8px}
 .identity-form select{min-width:150px;flex:0 1 185px}
 .divider-soft{height:1px;background:#edf0f7;margin:30px 0 20px}
+
+
+/* DigiFirma — app documental independiente de la app residencial. */
+:root{--df-ink:#0B2033;--df-gold:#C79A4B;--df-paper:#F6F4EE;--df-steel:#52788A;color:#0B2033;background:#F6F4EE}
+body{background:#F6F4EE}
+.sidebar{background:#0B2033;color:#C6D2D9;border-right:1px solid #233C4C}
+.logo-row strong{color:#F6F4EE;font-family:Georgia,serif;font-size:22px;font-weight:700}
+.logo-row small{color:#C79A4B;letter-spacing:1.1px}
+.brand-logo-mark{display:block;object-fit:cover;border-radius:8px;box-shadow:none;background:none}
+.workspace{background:#193448;border-color:#325064;box-shadow:none}
+.workspace strong{color:#F6F4EE}.workspace small,.sidebar-bottom small{color:#B8C6D0}
+.workspace-icon{background:#C79A4B;color:#0B2033;border-radius:5px}
+.nav-heading{color:#96A9B5}.navigation button{color:#C5D0D8;border-radius:5px}
+.navigation button:hover{background:#1C3B4F;color:#FFF}
+.navigation button[aria-current=page]{background:#C79A4B;color:#0B2033;box-shadow:none}
+.sidebar-bottom{background:#193448;border-color:#325064}.sidebar-bottom strong{color:#F6F4EE}
+.sidebar-status-dot,.tiny-dot{background:#C79A4B}
+.topbar{background:#FBFAF7;border-color:#E3DCCF}.topbar-left strong{color:#0B2033}
+.environment-pill{color:#7D5D30;background:#F4ECDD;border-color:#E0D2B9}
+.avatar{border-radius:5px;background:#0B2033;color:#F6F4EE}
+.main-inner{max-width:1390px}
+.page-heading h1{font-family:Georgia,serif;color:#0B2033;font-size:33px;letter-spacing:-.8px}
+.page-heading .eyebrow,.section-kicker{color:#88652C}
+.notice{background:#FBF4E7;border-color:#DEC897;color:#6D562C;border-radius:5px}
+.panel,.metric,.stat-card,.feature,.dashboard-card{border-radius:7px;border-color:#DED8CA;box-shadow:none}
+.primary-action{background:#0B2033;border-radius:6px;box-shadow:none}.primary-action:disabled{background:#9CA8AC}
+.sidebar .navigation button:focus-visible{outline-color:#F0C879}
+a:focus-visible,button:focus-visible,input:focus-visible{outline-color:#C79A4B}
+@media(max-width:760px){.sidebar{background:#0B2033}.page-heading h1{font-size:29px}}
