@@ -85,6 +85,8 @@ const files = new Map([
  ["assets/registro.css",await readFile(resolve(root, "assets/registro.css"), "utf8")],
  ["assets/site.css",publicCss],
  ["assets/site.js",publicJs],
+ ["assets/brand/digifirma-mark.svg",await readFile(resolve(root,"assets/brand/digifirma-mark.svg"),"utf8")],
+ ["assets/brand/digifirma-logo.svg",await readFile(resolve(root,"assets/brand/digifirma-logo.svg"),"utf8")],
  ["robots.txt","User-agent: *\nAllow: /\nDisallow: /app/\n"],
  ["_headers",staticHeaders],
  ["vercel.json",JSON.stringify({version:2,headers:securityHeaders},null,2)+"\n"]
