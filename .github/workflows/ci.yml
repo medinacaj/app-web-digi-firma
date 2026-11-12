@@ -106,6 +106,15 @@ jobs:
         run: bash tests/browser-smoke.sh
       - name: Verificar vista previa de registro con Chrome en tres tamaños
         run: bash tests/registro-browser-smoke.sh
+      - name: Verificar identidad corporativa en sitio y panel con Chrome
+        run: bash tests/brand-browser-smoke.sh
+      - name: Guardar capturas de nuevo branding DigiFirma
+        uses: actions/upload-artifact@v4
+        with:
+          name: digifirma-brand-preview
+          path: artifacts/digifirma-*.png
+          if-no-files-found: error
+          retention-days: 7
       - name: Guardar capturas sintéticas de registro (sin desplegar)
         uses: actions/upload-artifact@v4
         with:
