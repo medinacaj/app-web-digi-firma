@@ -1,0 +1,2 @@
+source-commit=a706c77a325ee825d796a9d4716de8db28c1c624
+release=digifirma-browser-only-synthetic-demo
