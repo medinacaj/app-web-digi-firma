@@ -2,11 +2,18 @@
 
 > **País único y mercado exclusivo: Venezuela (VE).**
 > **Estado:** base de desarrollo con laboratorio local y utilidades en navegador; no es un servicio operativo. NO genera firmas válidas ni emite certificados electrónicos.
-> El repositorio debe permanecer **privado**. No activar un despliegue público sin autorización y revisión de seguridad.
+> **Vista previa:** el repositorio está actualmente **público** para facilitar la revisión mediante GitHub Pages. La demo usa datos ficticios; no habilita firmas, cuentas ni acceso al backend. Cualquier cambio de visibilidad o publicación requiere autorización y debe preservar el acceso a las vistas previas.
 
 Digi-Firma es el nombre interno de una plataforma web para preparar, solicitar, verificar y custodiar documentos y firmas electrónicas **para el mercado exclusivamente venezolano**, conforme al marco legal venezolano y tras la validación jurídica correspondiente.
 
 La marca comercial aún no está aprobada. `FirmaEnLínea` continúa únicamente como candidato, no como nombre decidido.
+
+## Vista previa de avances en GitHub Pages
+
+- [Sitio de demostración](https://medinacaj.github.io/app-web-digi-firma/)
+- [Panel interactivo de demostración](https://medinacaj.github.io/app-web-digi-firma/app/)
+
+El despliegue [Pages #42871135452](https://github.com/medinacaj/app-web-digi-firma/actions/runs/42871135452) terminó correctamente y registró la URL principal. Esto no comprueba por sí solo la disponibilidad HTTP actual. El panel es **solo DEMO** y los documentos no se transmiten a una API productiva.
 
 ## Principios no negociables
 
