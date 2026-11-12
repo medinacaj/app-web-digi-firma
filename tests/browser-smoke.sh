@@ -29,7 +29,7 @@ fi
 
 chrome_args=(--headless --no-sandbox --disable-gpu --disable-dev-shm-usage --disable-extensions --no-first-run --virtual-time-budget=5000 --dump-dom)
 "$chrome" "${chrome_args[@]}" http://127.0.0.1:8787/ > /tmp/digifirma-site.html 2>/tmp/digifirma-chrome.log
-grep -q "Los acuerdos" /tmp/digifirma-site.html
+grep -q "Documentos claros" /tmp/digifirma-site.html
 grep -q "Proyecto en desarrollo" /tmp/digifirma-site.html
 grep -q "Explorar el prototipo" /tmp/digifirma-site.html
 grep -q "noindex,nofollow" /tmp/digifirma-site.html
