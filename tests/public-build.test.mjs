@@ -23,7 +23,8 @@ test("paquete público expone solo assets aprobados sin backend ni repositorio",
     assert.equal(proc.status,0,proc.stderr);
     const paths=await collect(temp);
     assert.deepEqual(paths.sort(),[
-      "_headers","app/index.html","assets/site.css","assets/site.js","index.html","robots.txt","vercel.json"
+      "_headers","app/index.html","assets/site.css","assets/site.js","index.html","robots.txt","vercel.json",
+      "assets/app.css","assets/app.js","src/project.mjs","src/local-pdf.mjs","src/identity-format.mjs","src/browser-demo.mjs"
     ].sort());
     const html=await readFile(join(temp,"index.html"),"utf8");
     assert.match(html, /<html lang="es-VE">/);
@@ -33,8 +34,13 @@ test("paquete público expone solo assets aprobados sin backend ni repositorio",
     assert.doesNotMatch(html, /noindex,nofollow,noarchive/);
     const gate=await readFile(join(temp,"app","index.html"),"utf8");
     assert.match(gate,/noindex,nofollow/);
-    assert.match(gate,/todavía no están habilitados/);
-    assert.doesNotMatch(gate,/input.+type="file"|input.+type="password"|api\/v1/);
+    assert.match(gate,/data-demo-mode="browser"/);
+    assert.match(gate, /class="primary-action" data-view="solicitudes"/);
+    assert.match(gate,/Crear borrador de prueba/);
+    assert.match(gate,/se pierden al recargar/);
+    assert.match(gate,/connect-src 'none'/);
+    assert.doesNotMatch(gate,/input.+type="password"|api\/v1/);
+    assert.match(gate,/id="pdf-local"/);
     const json=JSON.parse(await readFile(join(temp,"vercel.json"),"utf8"));
     assert.ok(json.headers.some(row=>row.headers.some(h=>h.key==="Content-Security-Policy")));
     const headers=await readFile(join(temp,"_headers"),"utf8");

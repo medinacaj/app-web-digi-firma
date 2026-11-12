@@ -1,3 +1,4 @@
+import { createBrowserDemoStore } from "../src/browser-demo.mjs";
 import { milestones, projectProgress, jurisdiction } from "../src/project.mjs";
 import { sha256LocalPdf, compareSha256, LocalPdfError, PDF_MAX_BYTES } from "../src/local-pdf.mjs";
 import { examineVenezuelanIdentifier } from "../src/identity-format.mjs";
@@ -76,9 +77,19 @@ const demoDrafts = document.getElementById("demo-drafts");
 const demoEvents = document.getElementById("demo-events");
 const demoCount = document.getElementById("demo-count");
 const demoIntegrity = document.getElementById("demo-integrity");
+const browserMode = document.documentElement.dataset.demoMode === "browser";
+const browserDemo = browserMode ? createBrowserDemoStore() : null;
 let demoAvailable = false;
 
 async function demoRequest(path, options) {
+  if (browserDemo) {
+    if (path === "/api/demo/state") return browserDemo.state();
+    const input = JSON.parse(options.body);
+    if (path === "/api/demo/drafts") return browserDemo.create(input);
+    const cancel = /^\/api\/demo\/drafts\/([a-zA-Z0-9-]+)\/cancel$/.exec(path);
+    if (cancel) return browserDemo.cancel({ ...input, id: cancel[1] });
+    throw new Error("Operación de demostración desconocida.");
+  }
   const response = await fetch(path, { cache: "no-store", credentials: "same-origin", ...options });
   const result = await response.json();
   if (!response.ok) throw new Error(result.error || "No se pudo procesar el laboratorio.");
@@ -142,10 +153,14 @@ async function initDemo() {
     demoAvailable = true;
     demoTemplate.disabled = false;
     demoCreate.disabled = false;
-    demoFeedback.textContent = "Laboratorio local activo. No ingresar datos personales ni documentos reales.";
+    demoFeedback.textContent = browserMode
+      ? "Simulación activa en tu navegador. Los borradores y eventos se pierden al recargar. Usa solo datos ficticios."
+      : "Laboratorio local activo. No ingresar datos personales ni documentos reales.";
     renderDemo(state);
   } catch {
-    demoFeedback.textContent = "Servidor de demostración no detectado. Inicia con DIGIFIRMA_DEMO=1 node server/dev.mjs.";
+    demoFeedback.textContent = browserMode
+      ? "No se pudo iniciar la simulación. Recarga la página en un navegador actualizado con HTTPS."
+      : "Servidor de demostración no detectado. Inicia con DIGIFIRMA_DEMO=1 node server/dev.mjs.";
     demoCreate.disabled = true;
   }
 }
@@ -162,7 +177,7 @@ demoCreate.addEventListener("click", async () => {
     renderDemo(state);
     demoFeedback.textContent = "Borrador de prueba creado. No se ha firmado ni enviado nada.";
   } catch {
-    demoFeedback.textContent = "No se pudo crear el borrador sintético.";
+    demoFeedback.textContent = browserMode ? "No se pudo crear el borrador. El límite es 30 por página; recarga para reiniciar." : "No se pudo crear el borrador sintético.";
     demoFeedback.dataset.level = "error";
   } finally { demoCreate.disabled = !demoAvailable; }
 });

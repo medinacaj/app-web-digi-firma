@@ -146,3 +146,12 @@ Los tests actuales solo revisan estados, sintaxis y consistencia de jurisdicció
 Ver `docs/PUBLICACION-COMERCIAL.md`.
 
 - [x] Salida `_headers` para Netlify/Cloudflare Pages, evitando depender de Vercel Hobby para hosting comercial.
+
+## Panel público de demostración — 2026-11-10
+- Publicación estática del panel y herramientas locales autorizada por el propietario.
+- Borradores ficticios y eventos SHA-256 en memoria del navegador, con límite de 30 y reinicio al recargar.
+- Modo explícito del build; sin llamadas a API, envío de PDFs, cuentas ni persistencia.
+- 44 pruebas Node aprobadas y comprobación Chromium del paquete a subruta de proyecto: navegación, crear/cancelar, eventos, PDF, comparación/rechazo, formato, recarga y móvil.
+- Backend comercial, autenticación y firmas reales continúan pendientes.
+
+- Publicación verificada: https://medinacaj.github.io/app-web-digi-firma/app/; los 13 archivos públicos coinciden con el paquete probado. Código fuente en PR #23, con CI aprobado.

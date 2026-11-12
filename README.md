@@ -8,6 +8,21 @@ Digi-Firma es el nombre interno de una plataforma web para preparar, solicitar, 
 
 La marca comercial aún no está aprobada. `FirmaEnLínea` continúa únicamente como candidato, no como nombre decidido.
 
+## Panel de pruebas publicado
+
+La demostración estática está disponible en https://medinacaj.github.io/app-web-digi-firma/app/.
+Permite navegar los módulos, calcular/comparar hashes PDF, comprobar formatos de identificación y crear/cancelar borradores ficticios. Los borradores y eventos solo viven en memoria de la pestaña y se pierden al recargar. No hay cuentas, documentos subidos, firma real ni persistencia. No introducir datos personales reales.
+
+El build exporta el panel con `data-demo-mode="browser"` y `connect-src 'none'`: no utiliza la API de laboratorio. El servidor de loopback conserva su comportamiento original opt-in.
+
+**Actualización 2026-11-10:** esta sección sustituye las referencias históricas de este documento a `/app/` como pantalla deshabilitada y a siete/seis archivos exportados. El paquete actual contiene 13 archivos de frontend expresamente permitidos; no contiene backend ni SQL. Publicar esta demo no habilita el servicio comercial.
+
+Para verificar el panel en un navegador con Playwright Core instalado fuera del repositorio:
+```bash
+PLAYWRIGHT_MODULE=/ruta/a/playwright-core DIGIFIRMA_TEST_URL=https://medinacaj.github.io/app-web-digi-firma/ node scripts/check-static-panel.cjs
+```
+El chequeo cubre navegación, borradores, eventos, recarga, PDF/comparación, rechazo de contenido inválido, formato de identidad y menú móvil; comprueba que no haya solicitudes API ni errores JavaScript.
+
 ## Principios no negociables
 
 1. **VE exclusivo:** el alcance comercial, flujos, registros, reglas del backend, contratos y verificaciones se limitan a Venezuela. La constante `jurisdiction.countryCode = "VE"` es una protección declarativa del prototipo, no una validación de backend.

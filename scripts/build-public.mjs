@@ -19,15 +19,16 @@ let landing = original.replace(
   'content="index,follow"'
 );
 // La página pública no anuncia funciones todavía inexistentes como operativas.
-landing = landing.replaceAll("Explorar el prototipo", "Acceso a la plataforma");
-landing = landing.replaceAll("Conocer la demostración", "Acceso a la plataforma");
-landing = landing.replaceAll("Ver interfaz de desarrollo", "Conocer el acceso");
-landing = landing.replaceAll("Abrir prototipo", "Ver acceso");
-landing = landing.replaceAll("Explorar Digi-Firma", "Acceso a Digi-Firma");
-landing = landing.replaceAll(">Prototipo</a>", ">Acceso</a>");
+landing = landing.replaceAll("Explorar el prototipo", "Probar el panel");
+landing = landing.replaceAll("Conocer la demostración", "Probar el panel");
+landing = landing.replaceAll("Ver interfaz de desarrollo", "Probar el panel");
+landing = landing.replaceAll("Abrir prototipo", "Probar el panel");
+landing = landing.replaceAll("Explorar Digi-Firma", "Probar el panel");
+landing = landing.replaceAll(">Prototipo</a>", ">Panel de pruebas</a>");
+landing = landing.replaceAll("crear borradores ficticios en un servidor local", "simular borradores ficticios en el navegador");
 landing = landing.replace(
   "Ya existe una interfaz navegable y herramientas locales de demostración.",
-  "El sitio público está preparado y la aplicación comercial continúa en desarrollo."
+  "Puedes probar las herramientas locales y simular borradores en el navegador. La aplicación comercial continúa en desarrollo."
 );
 
 if (!landing.includes('content="index,follow"') ||
@@ -35,42 +36,19 @@ if (!landing.includes('content="index,follow"') ||
     !landing.includes('<html lang="es-VE">')) {
   throw new Error("La versión pública no cumple su contrato de publicación.");
 }
-const publicApp=`<!doctype html>
-<html lang="es-VE">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow,noarchive">
-  <meta name="description" content="Acceso a Digi-Firma Venezuela. Plataforma en desarrollo; aún no disponible para operar firmas electrónicas.">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self'; script-src 'none'; object-src 'none'; base-uri 'none'; frame-ancestors 'none'; form-action 'none'">
-  <title>Acceso a la plataforma · Digi-Firma Venezuela</title>
-  <link rel="stylesheet" href="../assets/site.css">
-</head>
-<body>
-  <header class="header"><div class="wrap nav">
-    <a class="brand" href="../"><span class="brand-symbol" aria-hidden="true"><span>DF</span></span><span>Digi-Firma<small>VENEZUELA</small></span></a>
-    <a href="../" class="button button-plain">Volver al sitio</a>
-  </div></header>
-  <main id="principal" class="wrap public-access" aria-labelledby="access-title">
-    <span class="section-kicker">ACCESO A DIGI-FIRMA VENEZUELA</span>
-    <h1 id="access-title">La plataforma para clientes está en preparación.</h1>
-    <p>El registro, inicio de sesión y firma de documentos todavía no están habilitados. Estamos implementando identidad verificable, permisos de acceso, custodia privada de PDFs y validación jurídica venezolana.</p>
-    <div class="status-pill"><i></i> Sin recepción de documentos ni datos personales</div>
-    <p>Cuando el servicio esté operativo, este será el acceso de los usuarios autorizados. No introduzcas datos de identidad ni archivos en demostraciones no verificadas.</p>
-    <a href="../" class="button button-primary">Volver al sitio principal</a>
-  </main>
-  <footer class="footer"><div class="wrap footer-bottom"><span>Digi-Firma Venezuela · Producto en desarrollo</span><span>Sin servicio de firma electrónica operativo</span></div></footer>
-</body></html>`;
-
-const publicCss=(await readFile(resolve(root, "assets/site.css"),"utf8")) +
-`
-/* Pantalla de acceso no operativo: parte del paquete público, no de la demo. */
-.public-access{min-height:calc(100svh - 220px);display:flex;flex-direction:column;align-items:flex-start;justify-content:center;padding-top:70px;padding-bottom:95px}
-.public-access h1{font-size:clamp(34px,5vw,57px);max-width:780px;line-height:1.12;letter-spacing:-2px;margin:18px 0 20px}
-.public-access>p{max-width:720px;color:#6b7e9a;line-height:1.85;font-size:15px}
-.public-access .status-pill{margin:16px 0}
-.public-access>.button{margin-top:15px}
-`;
+const publicApp = (await readFile(resolve(root, "app/index.html"), "utf8"))
+  .replace('<html lang="es-VE">', '<html lang="es-VE" data-demo-mode="browser">')
+  .replace("default-src 'self';", "default-src 'self'; connect-src 'none';")
+  .replace("prototipo privado de gestión de firmas electrónicas", "panel de demostración de herramientas locales")
+  .replace("Entorno de desarrollo", "Panel de pruebas")
+  .replace(/<button type="button" class="primary-action" disabled[^>]*>[\s\S]*?<\/button>/,
+    '<button type="button" class="primary-action" data-view="solicitudes">+ Borrador de prueba</button>')
+  .replace("No hay usuarios autenticados ni backend.", "Demo en tu navegador: los borradores y eventos se pierden al recargar. No hay cuentas ni servidor de datos.")
+  .replace("Laboratorio local de solicitudes", "Simulación de solicitudes en el navegador")
+  .replace("ni guarda información al cerrar el servidor", "ni guarda información al recargar la página")
+  .replace("El laboratorio requiere el servidor local de demostración.", "Iniciando simulación en tu navegador…")
+  .replace("Proyecto privado en desarrollo", "Panel de pruebas · Datos ficticios");
+const publicCss = await readFile(resolve(root, "assets/site.css"), "utf8");
 const publicJs = await readFile(resolve(root, "assets/site.js"),"utf8");
 const securityHeaders=[
   {
@@ -109,6 +87,9 @@ const files = new Map([
  ["_headers",staticHeaders],
  ["vercel.json",JSON.stringify({version:2,headers:securityHeaders},null,2)+"\n"]
 ]);
+for (const name of ["assets/app.css", "assets/app.js", "src/project.mjs", "src/local-pdf.mjs", "src/identity-format.mjs", "src/browser-demo.mjs"]) {
+  files.set(name, await readFile(resolve(root, name), "utf8"));
+}
 await rm(out,{recursive:true,force:true});
 for (const [name,contents] of files) {
   const target=resolve(out,name);
@@ -116,4 +97,4 @@ for (const [name,contents] of files) {
   await mkdir(dirname(target),{recursive:true});
   await writeFile(target,contents,"utf8");
 }
-console.log("Paquete público aislado creado: "+files.size+" archivos; sin backend, demos, SQL ni datos privados.");
+console.log("Paquete público aislado creado: "+files.size+" archivos; sin backend, SQL ni datos privados; simulación solo en navegador.");

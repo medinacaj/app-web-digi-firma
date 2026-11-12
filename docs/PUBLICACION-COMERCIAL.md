@@ -2,6 +2,12 @@
 
 **Decisión de producto:** la web y la app deben ser accesibles por Internet para clientes venezolanos. El repositorio, el backend, credenciales y documentos de clientes continúan privados. **Sitio público no implica repositorio GitHub público.**
 
+## Demo estática autorizada — 2026-11-10
+
+El sitio y `/app/` se publican en GitHub Pages por autorización explícita del propietario. El panel permite herramientas locales de PDF/formato y una simulación de borradores y eventos con datos ficticios en memoria; se reinicia al recargar. No autentica, almacena documentos, envía solicitudes ni firma. El laboratorio HTTP permanece limitado a loopback.
+
+Esta actualización sustituye las referencias históricas siguientes a `/app/` como pantalla de disponibilidad y a un paquete de siete archivos. La whitelist actual contiene trece: los siete originales más assets/app.css, assets/app.js, src/project.mjs, src/local-pdf.mjs, src/identity-format.mjs y src/browser-demo.mjs. El build no exporta server/, db/, tests/ ni documentación. GitHub Pages añade `.nojekyll` en la rama de publicación. Pages no aplica `_headers` ni `vercel.json`; el panel incorpora una CSP meta con `connect-src 'none'`.
+
 ## Separación y fases
 1. **Sitio público (marketing, informativo)**: dominio raíz, funciones previstas, preguntas, SEO, transparencia. Puede publicarse antes de que el motor esté operativo, siempre sin prometer firmas legales, sin recoger cédulas ni PDFs.
 2. **Aplicación para clientes (`/app/`)**: ruta accesible desde Internet pero solo habilitar operaciones con autenticación real, sesiones revocables, RLS y controles de jurisdicción. El paquete actual muestra únicamente una pantalla de disponibilidad, sin demo privada ni formulario de registro.

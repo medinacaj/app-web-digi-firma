@@ -12,6 +12,7 @@ const staticFiles = Object.freeze({
   "/assets/site.js": ["../assets/site.js", "text/javascript; charset=utf-8"],
   "/assets/app.js": ["../assets/app.js", "text/javascript; charset=utf-8"],
   "/assets/app.css": ["../assets/app.css", "text/css; charset=utf-8"],
+  "/src/browser-demo.mjs": ["../src/browser-demo.mjs", "text/javascript; charset=utf-8"],
   "/src/project.mjs": ["../src/project.mjs", "text/javascript; charset=utf-8"],
   "/src/local-pdf.mjs": ["../src/local-pdf.mjs", "text/javascript; charset=utf-8"],
   "/src/identity-format.mjs": ["../src/identity-format.mjs", "text/javascript; charset=utf-8"]
