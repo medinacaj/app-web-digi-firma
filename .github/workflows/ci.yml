@@ -104,6 +104,15 @@ jobs:
           node-version: "22"
       - name: Probar sitio y panel con Chrome headless
         run: bash tests/browser-smoke.sh
+      - name: Verificar vista previa de registro con Chrome en tres tamaños
+        run: bash tests/registro-browser-smoke.sh
+      - name: Guardar capturas sintéticas de registro (sin desplegar)
+        uses: actions/upload-artifact@v4
+        with:
+          name: digifirma-registro-preview
+          path: artifacts/registro-*.png
+          if-no-files-found: error
+          retention-days: 7
 
   public-package:
     runs-on: ubuntu-latest

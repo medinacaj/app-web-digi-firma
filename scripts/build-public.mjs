@@ -81,6 +81,8 @@ const staticHeaders = [
 const files = new Map([
  ["index.html",landing],
  ["app/index.html",publicApp],
+ ["registro/index.html",await readFile(resolve(root, "registro/index.html"), "utf8")],
+ ["assets/registro.css",await readFile(resolve(root, "assets/registro.css"), "utf8")],
  ["assets/site.css",publicCss],
  ["assets/site.js",publicJs],
  ["robots.txt","User-agent: *\nAllow: /\nDisallow: /app/\n"],
