@@ -24,7 +24,8 @@ test("paquete público expone solo assets aprobados sin backend ni repositorio",
     const paths=await collect(temp);
     assert.deepEqual(paths.sort(),[
       "_headers","app/index.html","assets/site.css","assets/site.js","index.html","robots.txt","vercel.json",
-      "assets/app.css","assets/app.js","src/project.mjs","src/local-pdf.mjs","src/identity-format.mjs","src/browser-demo.mjs"
+      "assets/app.css","assets/app.js","src/project.mjs","src/local-pdf.mjs","src/identity-format.mjs","src/browser-demo.mjs",
+      "registro/index.html","assets/registro.css"
     ].sort());
     const html=await readFile(join(temp,"index.html"),"utf8");
     assert.match(html, /<html lang="es-VE">/);
@@ -41,6 +42,12 @@ test("paquete público expone solo assets aprobados sin backend ni repositorio",
     assert.match(gate,/connect-src 'none'/);
     assert.doesNotMatch(gate,/input.+type="password"|api\/v1/);
     assert.match(gate,/id="pdf-local"/);
+    const register=await readFile(join(temp,"registro","index.html"),"utf8");
+    assert.match(register,/REGISTRO NO DISPONIBLE/);
+    assert.match(register,/sin cuenta/i);
+    assert.match(register,/form-action 'none'/);
+    assert.doesNotMatch(register,/<form\\b|type="password"|type="submit"|<script\\b/i);
+    assert.match(html,/href="\\.\\/registro\\/"/);
     const json=JSON.parse(await readFile(join(temp,"vercel.json"),"utf8"));
     assert.ok(json.headers.some(row=>row.headers.some(h=>h.key==="Content-Security-Policy")));
     const headers=await readFile(join(temp,"_headers"),"utf8");
