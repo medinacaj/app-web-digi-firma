@@ -25,7 +25,8 @@ test("paquete público expone solo assets aprobados sin backend ni repositorio",
     assert.deepEqual(paths.sort(),[
       "_headers","app/index.html","assets/site.css","assets/site.js","index.html","robots.txt","vercel.json",
       "assets/app.css","assets/app.js","src/project.mjs","src/local-pdf.mjs","src/identity-format.mjs","src/browser-demo.mjs",
-      "registro/index.html","assets/registro.css"
+      "registro/index.html","assets/registro.css",
+      "assets/brand/digifirma-mark.svg","assets/brand/digifirma-logo.svg"
     ].sort());
     const html=await readFile(join(temp,"index.html"),"utf8");
     assert.match(html, /<html lang="es-VE">/);
@@ -48,6 +49,13 @@ test("paquete público expone solo assets aprobados sin backend ni repositorio",
     assert.match(register,/form-action 'none'/);
     assert.doesNotMatch(register, /<form|type="password"|type="submit"|<script/i);
     assert.ok(html.includes('href="./registro/"'));
+    const logo=await readFile(join(temp,"assets","brand","digifirma-logo.svg"),"utf8");
+    const favicon=await readFile(join(temp,"assets","brand","digifirma-mark.svg"),"utf8");
+    assert.match(logo,/DigiFirma/);
+    assert.match(favicon,/viewBox="0 0 64 64"/);
+    assert.match(html,/rel="icon"/);
+    assert.match(gate,/rel="icon"/);
+    assert.match(register,/rel="icon"/);
     const json=JSON.parse(await readFile(join(temp,"vercel.json"),"utf8"));
     assert.ok(json.headers.some(row=>row.headers.some(h=>h.key==="Content-Security-Policy")));
     const headers=await readFile(join(temp,"_headers"),"utf8");
