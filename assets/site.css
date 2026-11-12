@@ -3,3 +3,43 @@
 @media(max-width:780px){.wrap{padding-inline:24px}.header{height:70px}.nav-toggle{display:block}.nav-links{display:none;position:absolute;top:70px;left:0;right:0;background:#fff;box-shadow:0 15px 30px #172f5f17;border-top:1px solid #e9eef5;padding:18px 24px 24px;flex-direction:column;align-items:stretch;gap:8px}.nav-links.open{display:flex}.nav-links a{padding:11px 8px}.nav-links .nav-cta{text-align:center}.hero{grid-template-columns:1fr;gap:10px;padding-top:65px;padding-bottom:75px}.hero h1{font-size:clamp(43px,8vw,62px)}.hero-visual{max-width:600px;width:95%;margin:auto}.float-card{left:0}.benefit-grid{grid-template-columns:1fr}.benefit-grid>div,.benefit-grid>div+div{padding:19px 0;border:0;border-bottom:1px solid #e8edf5}.benefit-grid small{margin-left:29px}.section{padding-block:75px}.section-top{flex-direction:column;align-items:flex-start;gap:8px}.feature-cards{grid-template-columns:1fr}.feature-card p{min-height:0}.process-grid,.security-grid{grid-template-columns:1fr;gap:30px}.process-section{padding:75px 0}.security-art{height:310px;grid-row:2}.status-card{grid-template-columns:1fr;padding:30px}.status-side{align-items:flex-start}.footer-main,.footer-bottom{flex-direction:column;gap:25px}.footer-main nav{gap:15px 25px}}
 @media(max-width:410px){.wrap{padding-inline:18px}.announcement{font-size:9px;gap:5px}.hero h1{letter-spacing:-2.5px}.preview-body{grid-template-columns:71px 1fr}.preview-aside{padding:13px 4px}.preview-nav{font-size:10px}.preview-nav span{display:none}.preview-content{padding:18px 9px}.preview-stats{gap:7px}.preview-stats>div{padding:10px 7px}.preview-document{padding:7px}.preview-pill{display:none}.float-card{padding:8px}.float-card b{font-size:9px}.section h2,.process-section h2{letter-spacing:-1.3px}.security-art{height:270px}}
 @media(prefers-reduced-motion:reduce){:root{scroll-behavior:auto}.feature-card,.nav-cta,.button{transition:none}}
+
+/* DigiFirma: identidad editorial documental, v1 (demo segura). */
+:root{--df-ink:#0B2033;--df-gold:#C79A4B;--df-paper:#F6F4EE;--df-steel:#52788A;--df-line:#D9D7CE;--ink:var(--df-ink);--brand:var(--df-ink);--light:var(--df-paper);--line:var(--df-line)}
+body{background:var(--df-paper);color:var(--df-ink)}
+.announcement{background:var(--df-ink);color:#EEE6D7;letter-spacing:.2px}
+.announcement-dot{background:var(--df-gold)}.announcement-divider{color:#8498A6}.announcement a{color:#E8BD72}
+.header{background:#FAF9F5;border-color:#E8E3D6}
+.brand-lockup{display:block;width:clamp(186px,21vw,255px);height:auto;object-fit:contain}
+.nav-links{color:#375060}.nav-links>a:not(.nav-cta):hover{color:#0B2033}
+.nav-cta,.button-primary{background:#0B2033;color:#F6F4EE;border:1px solid #0B2033;box-shadow:0 12px 28px #0B203326;border-radius:6px}
+.nav-cta:hover,.button-primary:hover{background:#1C394B;box-shadow:0 12px 28px #0B20331f}
+.nav-toggle span{background:#0B2033}
+.hero{padding-top:82px;padding-bottom:105px;gap:70px;background:radial-gradient(circle at 93% 30%,#EBE5D8 0,transparent 44%)}
+.eyebrow,.section-kicker,.preview-label{color:#87642B}.eyebrow-line{background:var(--df-gold)}
+.hero h1{font-family:Georgia,"Times New Roman",serif;font-weight:600;line-height:1.08;letter-spacing:-2.1px;color:#0B2033;max-width:680px}
+.hero h1 em,.section h2 em,.process-section h2 em,.faq h2 em{color:#946C2E;font-style:italic}
+.hero-copy>p{color:#50616C;line-height:1.85;font-size:16px}
+.button-plain{color:#385565}.button-plain:hover{color:#0B2033}
+.hero-note{color:#637381}.hero-note-icon{border-color:#C79A4B;color:#9A702F}
+.hero-visual{background:#0B2033;border-radius:6px;padding:45px 20px 45px 30px;box-shadow:20px 20px 0 #D9CFBA;isolation:isolate}
+.hero-glow{inset:0;background:radial-gradient(circle at 75% 20%,#47607380,transparent 60%);z-index:-1}
+.preview-window{transform:none;background:#F6F4EE;border-color:#DCD6C9;border-radius:5px;box-shadow:0 26px 60px #07152170}
+.preview-head,.preview-aside{border-color:#D9D5C9}.preview-head{background:#F5F1E7}.preview-brand{color:#0B2033}
+.preview-logo.brand-mini{display:block;object-fit:contain;background:none;border-radius:4px;padding:0}
+.preview-profile{background:#C79A4B;color:#0B2033;border-radius:4px}
+.preview-nav.active{background:#ECE4D4;color:#0B2033}.preview-nav{color:#697783}
+.preview-content{background:#FCFBF8}.preview-heading{font-family:Georgia,serif;font-weight:700;color:#0B2033}
+.preview-stats>div,.preview-document{border-color:#DCD7CB;border-radius:4px;box-shadow:none;background:#fff}
+.preview-file{color:#0B2033;background:#EFE9DC}.preview-pill{background:#EFE9DC;color:#745426}
+.float-card{transform:none;left:-34px;bottom:4px;border:1px solid #C79A4B;border-radius:5px;box-shadow:0 20px 40px #07152147;background:#FAF6EB}.float-icon{background:#0B2033;color:#C79A4B}
+.benefit-bar{background:#E9E4D7;border-top:1px solid #D9D1BE;border-bottom:1px solid #D9D1BE}
+.section,.process-section,.status-section,.faq{color:#0B2033}
+.feature-card,.status-card,.faq-list details{border-color:#DBD5C8;border-radius:7px;box-shadow:none}
+.feature-glyph.blue,.feature-glyph.purple,.feature-glyph.mint{background:#EEE8DB;color:#0B2033}
+.process-section.light{background:#EEE9DF}
+.security-art,.shield-inner{filter:saturate(.48)}
+.closing-section,.closing{background:#0B2033}
+.footer{background:#071725;color:#DDE4E9}
+@media(max-width:860px){.hero{gap:32px}.hero-visual{padding:24px 15px}.float-card{left:0}}
+@media(max-width:520px){.brand-lockup{width:185px}.hero{padding-top:48px;padding-bottom:62px}.hero h1{letter-spacing:-1.3px}.hero-visual{padding:19px 12px;box-shadow:8px 9px 0 #D9CFBA}.float-card{position:relative;left:auto;bottom:auto;margin:16px 0 -3px;max-width:100%}}
