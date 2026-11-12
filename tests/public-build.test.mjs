@@ -46,8 +46,8 @@ test("paquete público expone solo assets aprobados sin backend ni repositorio",
     assert.match(register,/REGISTRO NO DISPONIBLE/);
     assert.match(register,/sin cuenta/i);
     assert.match(register,/form-action 'none'/);
-    assert.doesNotMatch(register,/<form\\b|type="password"|type="submit"|<script\\b/i);
-    assert.match(html,/href="\\.\\/registro\\/"/);
+    assert.doesNotMatch(register, /<form|type="password"|type="submit"|<script/i);
+    assert.ok(html.includes('href="./registro/"'));
     const json=JSON.parse(await readFile(join(temp,"vercel.json"),"utf8"));
     assert.ok(json.headers.some(row=>row.headers.some(h=>h.key==="Content-Security-Policy")));
     const headers=await readFile(join(temp,"_headers"),"utf8");
