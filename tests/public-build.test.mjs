@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import { spawnSync } from "node:child_process";
-import { mkdtemp, readFile, readdir, rm } from "node:fs/promises";
+import { mkdtemp, readFile, readdir, rm, writeFile, mkdir, symlink } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -64,4 +64,30 @@ test("paquete público expone solo assets aprobados sin backend ni repositorio",
     const script=await readFile(join(temp,"assets/site.js"),"utf8");
     assert.doesNotMatch(script,/api\/demo|api\/v1|Bearer |localStorage|analytics/);
   } finally {await rm(temp,{recursive:true,force:true});}
+});
+
+test("rechaza un destino --out no vacío y preserva los archivos ajenos",async()=>{
+  const target=await mkdtemp(join(tmpdir(),"digifirma-do-not-delete-"));
+  try{
+    const sentinel=join(target,"important.txt");
+    await writeFile(sentinel,"preserve this content");
+    const proc=spawnSync(process.execPath,[build,"--out",target],{encoding:"utf8",timeout:15000});
+    assert.notEqual(proc.status,0);
+    assert.match(proc.stderr,/debe estar vacío/);
+    assert.equal(await readFile(sentinel,"utf8"),"preserve this content");
+  }finally{await rm(target,{recursive:true,force:true});}
+});
+
+test("rechaza rutas --out enlazadas simbólicamente",async()=>{
+  const parent=await mkdtemp(join(tmpdir(),"digifirma-symlink-"));
+  try{
+    const real=join(parent,"actual");
+    const link=join(parent,"linked");
+    await mkdir(real);
+    await symlink(real,link,"dir");
+    const proc=spawnSync(process.execPath,[build,"--out",link],{encoding:"utf8",timeout:15000});
+    assert.notEqual(proc.status,0);
+    assert.match(proc.stderr,/enlace simbólico/);
+    assert.deepEqual(await readdir(real),[]);
+  }finally{await rm(parent,{recursive:true,force:true});}
 });
