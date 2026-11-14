@@ -1,11 +1,15 @@
 #!/usr/bin/env node
 // Exporta SOLAMENTE archivos públicos aprobados. No conecta el repositorio con el hosting.
-import { readFile, writeFile, mkdir, rm } from "node:fs/promises";
+import { readFile, writeFile, mkdir, rm, readdir, lstat } from "node:fs/promises";
 import { resolve, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 
 const sourceRoot = fileURLToPath(new URL("../", import.meta.url));
-const outputArg = process.argv[2] === "--out" && typeof process.argv[3] === "string"
+const customOutput = process.argv[2] === "--out";
+if (customOutput && (!process.argv[3] || !process.argv[3].trim())) {
+  throw new Error("Falta el directorio después de --out.");
+}
+const outputArg = customOutput
   ? process.argv[3]
   : new URL("../dist/public/", import.meta.url).pathname;
 const out = resolve(outputArg);
@@ -94,7 +98,54 @@ const files = new Map([
 for (const name of ["assets/app.css", "assets/app.js", "src/project.mjs", "src/local-pdf.mjs", "src/identity-format.mjs", "src/browser-demo.mjs"]) {
   files.set(name, await readFile(resolve(root, name), "utf8"));
 }
-await rm(out,{recursive:true,force:true});
+// A custom output must be empty; never erase caller-owned directories.
+// The default generated directory may only contain files emitted by this
+// same allowlist. Never follow a symlinked output path or parent.
+async function rejectSymlinkAncestors(target) {
+  let current = target;
+  for (;;) {
+    try {
+      const info = await lstat(current);
+      if (info.isSymbolicLink()) throw new Error("Salida insegura: enlace simbólico " + current);
+    } catch (error) {
+      if (error.code !== "ENOENT") throw error;
+    }
+    const parent = dirname(current);
+    if (parent === current) break;
+    current = parent;
+  }
+}
+async function collectOutputFiles(directory, prefix = "") {
+  let entries;
+  try { entries = await readdir(directory, { withFileTypes: true }); }
+  catch (error) {
+    if (error.code === "ENOENT") return [];
+    throw error;
+  }
+  const found = [];
+  for (const entry of entries) {
+    if (entry.isSymbolicLink()) throw new Error("Enlace simbólico no autorizado: " + entry.name);
+    const relative = prefix ? prefix + "/" + entry.name : entry.name;
+    if (entry.isDirectory()) found.push(...await collectOutputFiles(resolve(directory, entry.name), relative));
+    else if (entry.isFile()) found.push(relative);
+    else throw new Error("Tipo de archivo no admitido en salida: " + relative);
+  }
+  return found;
+}
+await rejectSymlinkAncestors(out);
+const generatedDirectory = resolve(root, "dist", "public");
+if (!customOutput && out === generatedDirectory) {
+  const unexpected = (await collectOutputFiles(out)).filter(name => !files.has(name));
+  if (unexpected.length) {
+    throw new Error("El directorio generado contiene archivos ajenos al paquete: " + unexpected.join(", "));
+  }
+  await rm(out, { recursive: true, force: true });
+} else {
+  await mkdir(out, { recursive: true });
+  if ((await readdir(out)).length) {
+    throw new Error("El directorio --out debe estar vacío; no se ha eliminado ningún archivo.");
+  }
+}
 for (const [name,contents] of files) {
   const target=resolve(out,name);
   if (!target.startsWith(out+"/")) throw new Error("Ruta de exportación insegura.");
