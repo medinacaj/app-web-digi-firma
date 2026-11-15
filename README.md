@@ -2,7 +2,7 @@
 
 > **País único y mercado exclusivo: Venezuela (VE).**
 > **Estado:** base de desarrollo con laboratorio local y utilidades en navegador; no es un servicio operativo. NO genera firmas válidas ni emite certificados electrónicos.
-> El repositorio debe permanecer **privado**. No activar un despliegue público sin autorización y revisión de seguridad.
+> **Visibilidad vigente (14/11/2026):** el [repositorio](https://github.com/medinacaj/app-web-digi-firma) y su demo GitHub Pages son **públicos por decisión posterior documentada** en los issues [#2](https://github.com/medinacaj/app-web-digi-firma/issues/2) y [#21](https://github.com/medinacaj/app-web-digi-firma/issues/21). La autorización corresponde a una **demostración sintética**, no a un servicio de firma, custodia documental, cuentas reales ni publicación de secretos. No cambiar visibilidad, Pages ni permisos automáticamente.
 
 Digi-Firma es el nombre interno de una plataforma web para preparar, solicitar, verificar y custodiar documentos y firmas electrónicas **para el mercado exclusivamente venezolano**, conforme al marco legal venezolano y tras la validación jurídica correspondiente.
 
@@ -28,7 +28,7 @@ El chequeo cubre navegación, borradores, eventos, recarga, PDF/comparación, re
 1. **VE exclusivo:** el alcance comercial, flujos, registros, reglas del backend, contratos y verificaciones se limitan a Venezuela. La constante `jurisdiction.countryCode = "VE"` es una protección declarativa del prototipo, no una validación de backend.
 2. **Derecho venezolano:** Decreto-Ley N.º 1.204 de 2001, Reglamento Parcial y resoluciones pertinentes de SUSCERTE. No aplicar categorías ni requisitos jurídicos de otros países por analogía.
 3. **Certificación:** diferenciar firma con requisitos del artículo 16 de la firma certificada por PSC conforme al artículo 18. Integraciones sujetas a acreditación vigente por SUSCERTE y revisión legal.
-4. **Privacidad y propiedad intelectual:** no publicar código, documentos ni datos reales. No se almacena información de usuarios en la fase actual.
+4. **Privacidad y propiedad intelectual:** no publicar secretos, credenciales, documentos ni datos reales, ni material interno que deba mantenerse reservado. La demostración y el código actualmente públicos no autorizan divulgar una futura implementación privada de custodia o firma. No se almacena información de usuarios en la fase actual.
 5. **Veracidad:** la interfaz no debe simular que una firma real está disponible.
 
 ## Ejecutar el prototipo
@@ -64,7 +64,7 @@ El CI prueba sintaxis, reglas de alcance de jurisdicción y algunas invariantes 
 
 ## Qué todavía no existe
 
-No hay backend, registro de usuarios, validación de cédulas o RIF, custodia de archivos, firma electrónica real, certificado, prestador integrado, facturación ni despliegue. Cualquier operación real requiere controles, pruebas y aprobación legal.
+No hay backend productivo, registro de usuarios reales, verificación de identidad, custodia de archivos, firma electrónica real, certificado, prestador integrado, facturación ni despliegue de un servicio transaccional. **La demo estática sí está publicada.** Cualquier operación real requiere controles, pruebas y aprobación legal.
 
 ## Seguimiento GitHub
 
