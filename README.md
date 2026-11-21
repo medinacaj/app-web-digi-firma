@@ -145,3 +145,18 @@ node --test tests/public-build.test.mjs
 **Ningún despliegue se ha activado:** el proveedor de hosting debe admitir uso comercial y la conexión Vercel actual está en plan Hobby no comercial. Ver `docs/PUBLICACION-COMERCIAL.md`.
 
 El paquete también incluye `_headers` para Netlify/Cloudflare Pages. En Netlify Free es posible publicar un sitio comercial sin enlazar GitHub: generar `dist/public` y subir **únicamente esa carpeta** mediante Netlify Drop; el proyecto sigue necesitando revisión legal y el área `/app/` continúa deshabilitada. La publicación aún no se ha ejecutado.
+
+
+## Continuidad y estado verificable · 21/11/2026
+
+**Propósito:** Prototipo para preparación y seguimiento de documentos electrónicos destinado a Venezuela.
+
+**Límite de alcance:** La demostración estática no firma documentos ni emite certificados.
+
+- **Código:** consultar la rama predeterminada y el historial de commits antes de afirmar una implementación reciente; el contenido anterior de este README conserva sus salvedades y evidencia histórica.
+- **Pruebas y CI:** consultar la ejecución de GitHub Actions asociada al SHA que se pretende entregar. Esta revisión documental no ejecuta pruebas de aplicación.
+- **Despliegue:** verificar directamente el entorno y la versión servida; ni un commit ni una demo ni CI satisfactoria acreditan por sí solos un despliegue productivo.
+- **Trabajo siguiente:** revisar los issues y PR abiertos, resolver el último bloqueo concreto y registrar cambio, rama, SHA, pruebas, entorno efectivamente comprobado y pendientes.
+- **Seguridad:** no introducir secretos, información personal ni datos reales en demos; conservar fixtures sintéticos y separar los entornos.
+
+**Fuente de verdad:** este repositorio y sus decisiones propias; no importar reglas de otro producto. Revisar la documentación técnica y operativa propia antes de implementar cambios. 
